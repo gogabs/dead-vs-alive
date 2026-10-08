@@ -1,0 +1,11 @@
+{
+  "id": "dead-vs-alive",
+  "name": "Dead vs. Alive",
+  "description": "Sobreviva às ondas de zumbis ouvindo de onde eles vêm.",
+  "version": "0.1.0",
+  "contract": 1,
+  "runtime": "python3",
+  "exec": "main.py",
+  "languages": ["pt-BR"],
+  "author": "Gabs"
+}
