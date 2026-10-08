@@ -3,6 +3,9 @@
 Um som "tiro_pistola" pode ser um arquivo (tiro_pistola.ogg / .wav) ou
 várias variações (tiro_pistola_1.ogg, tiro_pistola_2.ogg...). play() sorteia
 uma variação. Trocar os sons do jogo é só trocar os arquivos.
+
+Os arquivos só são lidos na primeira vez que tocam (ou em preload), para o
+jogo abrir rápido no console.
 """
 import os
 import random
@@ -15,7 +18,8 @@ class SoundBank:
     def __init__(self, audio, folder):
         self.audio = audio
         self.folder = folder
-        self.variants = {}
+        self.variants = {}   # nome -> lista de caminhos
+        self.loaded = {}     # caminho -> Sound
         self._scan()
 
     def _scan(self):
@@ -29,9 +33,21 @@ class SoundBank:
                 continue
             m = re.match(r"^(.*)_(\d+)$", base)
             name = m.group(1) if m else base
-            path = os.path.join(self.folder, f)
-            sound = self.audio.load(base, path)
-            self.variants.setdefault(name, []).append(sound)
+            self.variants.setdefault(name, []).append(os.path.join(self.folder, f))
+
+    def _sound(self, path):
+        sound = self.loaded.get(path)
+        if sound is None:
+            sound = self.audio.load(path, path)
+            self.loaded[path] = sound
+        return sound
+
+    def preload(self, *prefixes):
+        """Lê já os sons cujos nomes começam com estes prefixos."""
+        for name, paths in self.variants.items():
+            if not prefixes or name.startswith(prefixes):
+                for path in paths:
+                    self._sound(path)
 
     def has(self, name):
         return name in self.variants
@@ -40,7 +56,7 @@ class SoundBank:
         options = self.variants.get(name)
         if not options:
             return None
-        return random.choice(options)
+        return self._sound(random.choice(options))
 
     def first(self, *names):
         """O primeiro nome que existe, do mais específico ao mais genérico."""

@@ -11,6 +11,7 @@ continuam com a versão provisória de tools/gerar_sons_provisorios.py.
 import glob
 import os
 import shutil
+import subprocess
 import sys
 import wave
 
@@ -87,6 +88,34 @@ def to_mono_wav(src, dst):
         w.writeframes(samples.tobytes())
 
 
+AMBIENCE_SECONDS = 40
+CROSSFADE = 1.5
+
+
+def ambience_wav(src, dst):
+    """Ambiente: decodifica (ffmpeg), corta em 40 s e emenda o fim no começo.
+
+    OGG longo demora segundos para decodificar no console; WAV curto abre na hora.
+    """
+    rate = 22050
+    raw = subprocess.run(
+        ["ffmpeg", "-v", "error", "-i", src, "-t", str(AMBIENCE_SECONDS + CROSSFADE),
+         "-ac", "2", "-ar", str(rate), "-f", "s16le", "-"],
+        check=True, stdout=subprocess.PIPE).stdout
+    x = np.frombuffer(raw, dtype="<i2").reshape(-1, 2).astype(np.float64)
+    n = int(rate * CROSSFADE)
+    if len(x) > 3 * n:
+        ramp = np.linspace(0, 1, n)[:, None]
+        head, tail = x[:n], x[-n:]
+        x = x[n:].copy()
+        x[-n:] = tail * (1 - ramp) + head * ramp
+    with wave.open(dst, "wb") as w:
+        w.setnchannels(2)
+        w.setsampwidth(2)
+        w.setframerate(rate)
+        w.writeframes(np.clip(x, -32768, 32767).astype("<i2").tobytes())
+
+
 def remove_existing(name):
     for f in glob.glob(os.path.join(OUT, name + ".*")) + glob.glob(os.path.join(OUT, name + "_[0-9]*.*")):
         os.remove(f)
@@ -104,8 +133,12 @@ def main(root):
         for i, src in enumerate(sources, 1):
             ext = os.path.splitext(src)[1].lower()
             base = name if len(sources) == 1 else "%s_%d" % (name, i)
+            if name.startswith("ambiente_"):
+                ext = ".wav"
             dst = os.path.join(OUT, base + ext)
-            if positional and ext == ".wav":
+            if name.startswith("ambiente_"):
+                ambience_wav(src, dst)
+            elif positional and ext == ".wav":
                 to_mono_wav(src, dst)
             else:
                 shutil.copyfile(src, dst)

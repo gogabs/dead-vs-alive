@@ -19,6 +19,7 @@ from dva.tutorial import Tutorial
 
 game = a11y.Game(axes=True)
 bank = SoundBank(game.sound, "sounds")
+bank.preload("menu", "mira", "alvo")
 menu_sounds = {"move": bank.get("menu_mover"), "select": bank.get("menu_confirmar")}
 RECORD_FILE = os.path.join(game.save_dir, "recorde.json")
 

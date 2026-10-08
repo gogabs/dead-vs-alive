@@ -266,9 +266,9 @@ Os que não aparecem aqui são provisórios, gerados por tools/gerar_sons_provis
 | morte_2.wav | swamp/Player/Death2.wav |
 | morte_3.wav | swamp/Player/Death3.wav |
 | ambiente_hospital_quarto.wav | swamp/Ambience/EKG.wav |
-| ambiente_hospital_corredor.ogg | sbyw/loop_hallway.ogg |
-| ambiente_estacionamento.ogg | sbyw/loop_rainoncars.ogg |
-| ambiente_cozinha.ogg | sbyw/loop_kitchen_industrial.ogg |
-| ambiente_metro.ogg | sbyw/loop_subway_tunnel.ogg |
+| ambiente_hospital_corredor.wav | sbyw/loop_hallway.ogg |
+| ambiente_estacionamento.wav | sbyw/loop_rainoncars.ogg |
+| ambiente_cozinha.wav | sbyw/loop_kitchen_industrial.ogg |
+| ambiente_metro.wav | sbyw/loop_subway_tunnel.ogg |
 | ambiente_igreja.wav | swamp/Ambience/Church.wav |
-| ambiente_floresta.ogg | sbyw/loop_forest_night.ogg |
+| ambiente_floresta.wav | sbyw/loop_forest_night.ogg |
