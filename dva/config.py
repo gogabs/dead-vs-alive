@@ -95,3 +95,12 @@ def wave_plan(room_number):
 
 
 SPAWN_DISTANCE = (14.0, 18.0)
+
+# Indicador de alvo na mira: (até esta distância, nome da faixa, intervalo entre bipes).
+# Grave e lento quando longe, agudo e rápido quando perto. Funciona sem fone.
+TARGET_BANDS = [
+    (4.0, "perto", 0.22),
+    (9.0, "medio", 0.45),
+    (float("inf"), "longe", 0.9),
+]
+BAND_WORDS = {"perto": "perto", "medio": "a média distância", "longe": "longe"}

@@ -33,7 +33,9 @@ class Tutorial:
         self.step += 1
         r = self.run
         if self.step == 1:
-            self._say("Um zumbi vem da frente. Mire para cima e atire com R2.",
+            self._say("Um zumbi vem da frente. Mire para cima. Quando um zumbi está na "
+                      "sua mira, você ouve um bipe: grave e lento se ele está longe, "
+                      "agudo e rápido se está perto. Atire com R2.",
                       lambda: r.spawn("comum", "up", 9.0))
         elif self.step == 2:
             self._say("Muito bem. Agora um vem da esquerda.",

@@ -10,12 +10,15 @@ def audio_pos(direction, distance):
     return (vx * d, 0.0, vz * d)
 
 
+def band_of(distance):
+    for limit, band, interval in C.TARGET_BANDS:
+        if distance < limit:
+            return band, interval
+    return C.TARGET_BANDS[-1][1:]
+
+
 def distance_word(distance):
-    if distance < 4:
-        return "perto"
-    if distance < 9:
-        return "a média distância"
-    return "longe"
+    return C.BAND_WORDS[band_of(distance)[0]]
 
 
 class Zombie:
@@ -43,11 +46,13 @@ class Zombie:
     def pos(self):
         return audio_pos(self.direction, self.distance)
 
+    def audible(self):
+        return self.quiet_until is None or self.distance <= self.quiet_until
+
     def _update_groan(self):
         if self.groan is None:
             return
-        audible = self.quiet_until is None or self.distance <= self.quiet_until
-        self.groan.set_volume(self.groan_volume if audible else 0.0)
+        self.groan.set_volume(self.groan_volume if self.audible() else 0.0)
         self.groan.set_position(*self.pos())
 
     def update(self, dt):
@@ -97,6 +102,8 @@ class Run:
         self.aim = "up"
         self.cooldown = 0.0
         self.reload_timer = 0.0
+        self.target_band = None         # faixa do alvo na mira (indicador)
+        self.target_timer = 0.0
         self.on_kill = None             # ganchos do tutorial
         self.on_reloaded = None
         self.set_weapon(C.START_WEAPON)
@@ -120,6 +127,33 @@ class Run:
         vx, vz = C.DIRECTIONS[direction][1]
         self.bank.play("mira", pitch=C.AIM_PITCH[direction], pos=(vx, 0.0, vz),
                        reverb=False, volume=0.7)
+        # o indicador toca logo depois do clique, se houver alvo
+        self.target_band = None
+        self.target_timer = 0.08
+
+    def _target(self):
+        """Zumbi mais próximo na direção da mira (só os que já dá para ouvir)."""
+        candidates = [z for z in self.zombies
+                      if z.alive and z.direction == self.aim and z.audible()]
+        return min(candidates, key=lambda z: z.distance) if candidates else None
+
+    def _update_target(self, dt):
+        z = self._target()
+        if z is None:
+            self.target_band = None
+            return
+        band, interval = band_of(z.distance)
+        if band != self.target_band:
+            # alvo novo ou mudou de faixa: avisa já (ou logo após o clique da mira)
+            self.target_band = band
+            self.target_timer = min(self.target_timer, 0.08) if self.target_timer > 0 else 0.0
+        self.target_timer -= dt
+        if self.target_timer <= 0:
+            self.target_timer += interval
+            if self.target_timer <= 0:
+                self.target_timer = interval
+            vx, vz = C.DIRECTIONS[self.aim][1]
+            self.bank.play("alvo_" + band, pos=(vx, 0.0, vz), reverb=False, volume=0.6)
 
     def fire(self):
         if self.state != "fighting" or self.paused:
@@ -291,6 +325,7 @@ class Run:
                 self._bite(z)
                 if self.state == "over":
                     return
+        self._update_target(dt)
         if not self.tutorial and not self.spawn_queue and not self.zombies:
             self._room_cleared()
 

@@ -86,7 +86,9 @@ def active_run():
 INSTRUCTIONS = (
     "Zumbis vêm da frente, da direita, de trás e da esquerda. Ouça os passos e os "
     "gemidos: quanto mais alto, mais perto. Mire com os direcionais ou o analógico "
-    "esquerdo, atire ou golpeie com R2 e recarregue a arma vazia com X. Select fala "
+    "esquerdo. Com um zumbi na mira, toca um bipe: grave e lento se ele está longe, "
+    "agudo e rápido se está perto. Atire ou golpeie com R2 e recarregue a arma "
+    "vazia com X. Select fala "
     "a situação. Start pausa. Ao limpar uma sala você recupera uma vida e pode achar "
     "uma arma nova; a troca é obrigatória. Use fone de ouvido."
 )

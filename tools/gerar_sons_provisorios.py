@@ -174,6 +174,10 @@ def zombies():
 # --- interface -------------------------------------------------------------
 def interface():
     save("mira", click(2000, 0.02))
+    for name, freq, sec in (("alvo_longe", 520, 0.09), ("alvo_medio", 880, 0.07),
+                            ("alvo_perto", 1500, 0.05)):
+        beep = np.sin(2 * np.pi * freq * t(sec)) + 0.3 * np.sin(2 * np.pi * 2 * freq * t(sec))
+        save(name, fade(beep, 0.003, 0.02), 0.6)
     save("menu_mover", click(1600, 0.02), 0.5)
     save("menu_confirmar", mix(0.2, (0, click(1200, 0.05)), (0.07, click(1800, 0.06))), 0.5)
     notes = [523, 659, 784, 1047]
