@@ -34,10 +34,11 @@ class Zombie:
         self.step_timer = random.uniform(0, self.step_every)
         self.quiet_until = spec["quiet_until"]
         self.groan_volume = spec["groan_volume"]
+        self.growl_every = spec["growl"]
+        self.growl_timer = random.uniform(0.2, 1.5)
+        self.voice_pitch = random.uniform(0.92, 1.08)
         self.alive = True
-        self.groan = run.bank.play(self._name("gemido"), loop=True, volume=0.0,
-                                   pitch=random.uniform(0.85, 1.15), pos=self.pos())
-        self._update_groan()
+        self.groan = None   # rosnado tocando agora (acompanha o zumbi)
 
     def _name(self, base):
         specific = "%s_%s" % (base, self.kind)
@@ -49,11 +50,19 @@ class Zombie:
     def audible(self):
         return self.quiet_until is None or self.distance <= self.quiet_until
 
-    def _update_groan(self):
-        if self.groan is None:
-            return
-        self.groan.set_volume(self.groan_volume if self.audible() else 0.0)
-        self.groan.set_position(*self.pos())
+    def _update_groan(self, dt):
+        self.growl_timer -= dt
+        if self.growl_timer <= 0:
+            self.growl_timer = random.uniform(*self.growl_every)
+            if self.audible():
+                self.groan = self.run.bank.play(self._name("rosnado"), pos=self.pos(),
+                                                volume=self.groan_volume,
+                                                pitch=self.voice_pitch)
+        if self.groan is not None:
+            if self.groan.playing:
+                self.groan.set_position(*self.pos())
+            else:
+                self.groan = None
 
     def update(self, dt):
         if self.distance > C.BITE_DISTANCE:
@@ -62,9 +71,11 @@ class Zombie:
         if self.step_timer <= 0:
             self.step_timer += self.step_every
             if self.quiet_until is None or self.distance <= self.quiet_until + 2:
-                self.run.bank.play(self._name("passo"), pos=self.pos(),
-                                   volume=0.8, pitch=random.uniform(0.9, 1.1))
-        self._update_groan()
+                floor = self.run.floor
+                self.run.bank.play_first(
+                    ["passo_%s" % self.kind, "passo_%s" % floor, "passo"],
+                    pos=self.pos(), volume=0.8, pitch=random.uniform(0.9, 1.1))
+        self._update_groan(dt)
 
     def push(self, meters):
         self.distance = min(C.SPAWN_DISTANCE[1], self.distance + meters)
@@ -73,7 +84,10 @@ class Zombie:
         self.alive = False
         if self.groan is not None:
             self.groan.stop(fade=0.15)
-        self.run.bank.play(self._name("morte_zumbi"), pos=self.pos())
+        floor, pos = self.run.floor, self.pos()
+        self.run.game.after(0.25, lambda: self.run.bank.play_first(
+            ["queda_%s_%s" % (self.kind, floor), "queda_%s" % floor, "morte_zumbi"],
+            pos=pos))
 
     def silence(self):
         if self.groan is not None:
@@ -99,6 +113,7 @@ class Run:
         self.state = "idle"             # idle, intro, fighting, between, over
         self.paused = False
         self.ambience = None
+        self.floor = "ladrilho"
         self.aim = "up"
         self.cooldown = 0.0
         self.reload_timer = 0.0
@@ -109,7 +124,9 @@ class Run:
         self.set_weapon(C.START_WEAPON)
 
     # --- armas ---------------------------------------------------------
-    def set_weapon(self, key):
+    def set_weapon(self, key, announce=False):
+        if announce:
+            self.bank.play_first(["sacar_" + key, "arma_achada"], reverb=False)
         self.weapon_key = key
         self.weapon = C.WEAPONS[key]
         self.ammo = self.weapon["mag"]
@@ -164,7 +181,7 @@ class Run:
         if self.cooldown > 0:
             return
         if not w["melee"] and self.ammo <= 0:
-            self.bank.play("vazia", reverb=False)
+            self.bank.play(self._wname("vazia"), reverb=False)
             return
         self.cooldown = w["cooldown"]
         if w["per_round"]:
@@ -179,7 +196,9 @@ class Run:
         targets = in_line[:1] if w["mode"] == "single" else in_line
         for z in targets:
             z.hp -= w["damage"]
-            self.bank.play("impacto", pos=z.pos(), pitch=random.uniform(0.9, 1.1))
+            self.bank.play_first(["impacto_%s_%s" % (w["impact"], z.kind),
+                                  "impacto_%s" % w["impact"], "impacto"],
+                                 pos=z.pos(), pitch=random.uniform(0.95, 1.05))
             if z.hp <= 0:
                 z.kill()
                 self.kills += 1
@@ -200,13 +219,14 @@ class Run:
             self.bank.play("negado", reverb=False)
             return
         self.reload_timer = w["reload"]
-        self.bank.play(self._wname("recarga"), reverb=False)
+        if not w["per_round"]:
+            self.bank.play(self._wname("recarga"), reverb=False)
 
     def _finish_reload(self):
         w = self.weapon
         if w["per_round"]:
             self.ammo = min(w["mag"], self.ammo + 1)
-            self.bank.play("cartucho", reverb=False)
+            self.bank.play(self._wname("cartucho"), reverb=False)
         else:
             self.ammo = w["mag"]
             self.bank.play(self._wname("pronta"), reverb=False)
@@ -219,7 +239,8 @@ class Run:
 
     def next_room(self):
         self.room_number += 1
-        room_id, room_name, reverb, amb_volume = C.ROOMS[(self.room_number - 1) % len(C.ROOMS)]
+        room_id, room_name, reverb, amb_volume, floor = C.ROOMS[(self.room_number - 1) % len(C.ROOMS)]
+        self.floor = floor
         self.game.sound.set_reverb(reverb)
         if self.ambience is not None:
             self.ambience.stop(fade=1.0)
@@ -253,9 +274,8 @@ class Run:
             parts.append("Você recuperou uma vida. %s." % self._lives_text())
         if random.random() < C.WEAPON_FIND_CHANCE:
             key = random.choice([k for k in C.WEAPONS if k != self.weapon_key])
-            self.set_weapon(key)
+            self.set_weapon(key, announce=True)
             w = self.weapon
-            self.bank.play("arma_achada", reverb=False)
             parts.append("Você encontrou %s %s. %s" % (w["article"], w["name"], w["describe"]))
         self.game.say(" ".join(parts), on_done=lambda done: self._advance())
 
@@ -270,7 +290,7 @@ class Run:
         return "1 vida" if self.lives == 1 else "%d vidas" % self.lives
 
     def _bite(self, z):
-        self.bank.play("mordida", pos=z.pos())
+        self.bank.play_first(["ataque_" + z.kind, "mordida"], pos=z.pos())
         self.bank.play("dor", reverb=False)
         z.distance = C.BITE_PUSHBACK
         if self.tutorial:

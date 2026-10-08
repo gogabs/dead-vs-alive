@@ -42,6 +42,17 @@ class SoundBank:
             return None
         return random.choice(options)
 
+    def first(self, *names):
+        """O primeiro nome que existe, do mais específico ao mais genérico."""
+        for name in names:
+            if name in self.variants:
+                return name
+        return None
+
+    def play_first(self, names, **kwargs):
+        name = self.first(*names)
+        return self.play(name, **kwargs) if name else None
+
     def play(self, name, **kwargs):
         sound = self.get(name)
         if sound is None:

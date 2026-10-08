@@ -25,31 +25,31 @@ MAX_LIVES = 3
 #       "pierce" = todos na direção dentro do alcance (projétil atravessa)
 # reload: segundos para encher o pente; "per_round" = um cartucho por X
 WEAPONS = {
-    "pistola": dict(name="pistola", article="uma", mag=8, range=10.0, reload=1.4,
+    "pistola": dict(impact="bala", name="pistola", article="uma", mag=8, range=10.0, reload=1.4,
                     cooldown=0.25, damage=1.0, mode="single", knockback=0.0,
                     melee=False, per_round=False,
                     describe="Oito balas, alcance médio."),
-    "espingarda": dict(name="espingarda", article="uma", mag=2, range=5.0, reload=2.2,
+    "espingarda": dict(impact="chumbo", name="espingarda", article="uma", mag=2, range=5.0, reload=2.2,
                        cooldown=0.6, damage=2.0, mode="spread", knockback=1.0,
                        melee=False, per_round=False,
                        describe="Dois tiros, curto alcance, acerta todos os zumbis na direção."),
-    "rifle": dict(name="rifle", article="um", mag=5, range=18.0, reload=1.8,
+    "rifle": dict(impact="rifle", name="rifle", article="um", mag=5, range=18.0, reload=1.8,
                   cooldown=0.5, damage=2.0, mode="single", knockback=0.0,
                   melee=False, per_round=False,
                   describe="Cinco tiros, longo alcance. Atire cedo."),
-    "revolver": dict(name="revólver", article="um", mag=6, range=10.0, reload=0.45,
+    "revolver": dict(impact="bala", name="revólver", article="um", mag=6, range=10.0, reload=0.45,
                      cooldown=0.35, damage=1.5, mode="single", knockback=0.0,
                      melee=False, per_round=True,
                      describe="Seis tiros. Recarrega uma bala por vez, a qualquer momento."),
-    "facao": dict(name="facão", article="um", mag=0, range=1.6, reload=0.0,
+    "facao": dict(impact="facao", name="facão", article="um", mag=0, range=1.6, reload=0.0,
                   cooldown=0.4, damage=1.0, mode="single", knockback=0.0,
                   melee=True, per_round=False,
                   describe="Corpo a corpo. Espere o zumbi chegar bem perto."),
-    "taco": dict(name="taco", article="um", mag=0, range=1.8, reload=0.0,
+    "taco": dict(impact="taco", name="taco", article="um", mag=0, range=1.8, reload=0.0,
                  cooldown=0.7, damage=0.5, mode="single", knockback=4.0,
                  melee=True, per_round=False,
                  describe="Corpo a corpo. Empurra o zumbi para longe; precisa de dois golpes."),
-    "besta": dict(name="besta", article="uma", mag=1, range=16.0, reload=1.6,
+    "besta": dict(impact="flecha", name="besta", article="uma", mag=1, range=16.0, reload=1.6,
                   cooldown=0.3, damage=2.0, mode="pierce", knockback=0.0,
                   melee=False, per_round=False,
                   describe="Um disparo, longo alcance, atravessa todos na direção."),
@@ -58,22 +58,28 @@ START_WEAPON = "pistola"
 WEAPON_FIND_CHANCE = 0.5
 
 # speed em m/s; quiet_until: só é ouvido a menos dessa distância
+# growl: intervalo (mín, máx) entre rosnados, em segundos
 ZOMBIES = {
-    "comum": dict(hp=1.0, speed=0.8, step=0.9, groan_volume=0.9, quiet_until=None),
-    "corredor": dict(hp=1.0, speed=1.9, step=0.35, groan_volume=0.8, quiet_until=None),
-    "brutamontes": dict(hp=4.0, speed=0.5, step=1.2, groan_volume=1.0, quiet_until=None),
-    "rastejante": dict(hp=1.0, speed=0.7, step=0.6, groan_volume=0.9, quiet_until=4.0),
+    "comum": dict(hp=1.0, speed=0.8, step=0.9, groan_volume=0.9, quiet_until=None,
+                  growl=(2.5, 5.0)),
+    "corredor": dict(hp=1.0, speed=1.9, step=0.35, groan_volume=0.8, quiet_until=None,
+                     growl=(1.5, 3.0)),
+    "brutamontes": dict(hp=4.0, speed=0.5, step=1.2, groan_volume=1.0, quiet_until=None,
+                        growl=(3.0, 6.0)),
+    "rastejante": dict(hp=1.0, speed=0.7, step=0.6, groan_volume=0.9, quiet_until=4.0,
+                       growl=(2.0, 4.0)),
 }
 
-# (id, nome falado, preset de reverberação, volume do ambiente)
+# (id, nome falado, preset de reverberação, volume do ambiente, piso)
+# O piso escolhe os passos e o som da queda dos zumbis.
 ROOMS = [
-    ("hospital_quarto", "quarto de hospital", "quarto", 0.35),
-    ("hospital_corredor", "corredor do hospital", "corredor", 0.35),
-    ("estacionamento", "estacionamento", "estacionamento", 0.45),
-    ("cozinha", "cozinha do restaurante", "cozinha", 0.35),
-    ("metro", "estação de metrô", "metro", 0.4),
-    ("igreja", "igreja", "igreja", 0.3),
-    ("floresta", "floresta", "floresta", 0.45),
+    ("hospital_quarto", "quarto de hospital", "quarto", 0.35, "ladrilho"),
+    ("hospital_corredor", "corredor do hospital", "corredor", 0.35, "marmore"),
+    ("estacionamento", "estacionamento", "estacionamento", 0.45, "concreto"),
+    ("cozinha", "cozinha do restaurante", "cozinha", 0.35, "metal"),
+    ("metro", "estação de metrô", "metro", 0.4, "cimento"),
+    ("igreja", "igreja", "igreja", 0.3, "madeira"),
+    ("floresta", "floresta", "floresta", 0.45, "folhas"),
 ]
 
 

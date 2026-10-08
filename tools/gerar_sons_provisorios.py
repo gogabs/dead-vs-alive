@@ -150,13 +150,12 @@ def step(lo, hi, sec, decay):
 
 
 def zombies():
-    save("gemido", loopable(groan(95, 4.5)))
-    save("gemido_corredor", loopable(groan(140, 3.0, 0.6)))
-    save("gemido_brutamontes", loopable(groan(65, 5.0, 0.2)))
-    save("gemido_rastejante", loopable(groan(110, 4.0, 0.8)))
+    save("rosnado", fade(groan(95, 2.2), 0.05, 0.4))
+    save("rosnado_corredor", fade(groan(140, 1.5, 0.6), 0.05, 0.3))
+    save("rosnado_brutamontes", fade(groan(65, 2.8, 0.2), 0.05, 0.5))
+    save("rosnado_rastejante", fade(groan(110, 2.0, 0.8), 0.05, 0.4))
     for i in range(1, 4):
         save("passo_%d" % i, step(60, 600 + 100 * i, 0.14, 0.03))
-        save("passo_corredor_%d" % i, step(150, 1500 + 200 * i, 0.08, 0.015))
         save("passo_brutamontes_%d" % i, step(30, 300 + 50 * i, 0.25, 0.06))
         scrape = band(noise(0.35), 800 + 200 * i, 4000) * np.sin(np.pi * t(0.35) / 0.35)
         save("passo_rastejante_%d" % i, scrape)
