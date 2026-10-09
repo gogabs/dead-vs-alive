@@ -1,0 +1,4 @@
+# Roda no console (Linux): LF sempre.
+* text=auto eol=lf
+*.wav binary
+*.ogg binary
