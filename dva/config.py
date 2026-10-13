@@ -83,6 +83,17 @@ ROOMS = [
 ]
 
 
+# Ajustes sobre os presets de reverberação do SDK, por preset. Os originais
+# de corredor, cozinha, metrô e igreja têm cauda longa e alta demais: a cada
+# tiro o eco cobria os passos dos zumbis que se aproximam. Aqui a cauda
+# encurta (decay, em segundos) e baixa (late_gain), mantendo o caráter da sala.
+REVERB_TWEAKS = {
+    "corredor": dict(decay=1.2, late_gain=1.0),
+    "cozinha": dict(decay=0.9, reflections_gain=0.3, late_gain=0.8),
+    "metro": dict(decay=2.0, late_gain=0.85),
+    "igreja": dict(decay=3.0, reflections_gain=0.15, late_gain=0.75),
+}
+
 def wave_plan(room_number):
     """Zumbis da onda: lista de tipos e intervalo entre aparições."""
     n = room_number

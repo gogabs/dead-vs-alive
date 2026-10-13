@@ -1,5 +1,6 @@
 """Combat parity and optional rendering, without audio devices or human saves."""
 import importlib
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -9,9 +10,9 @@ import tempfile
 import types
 import unittest
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(os.environ.get('DVA_TEST_ROOT',str(Path(__file__).resolve().parents[1])))
 STAGE = ROOT
-REF = ROOT/'tests/fixtures'
+REF = Path(os.environ.get('DVA_FIXTURE_ROOT',str(ROOT/'tests/fixtures')))
 
 
 def package(name, path):
@@ -30,7 +31,7 @@ class Game:
     def __init__(self):
         self.dir = str(STAGE)
         self.calls = []
-        self.sound = types.SimpleNamespace(set_reverb=lambda value: None, pause_all=lambda:None, resume_all=lambda:None)
+        self.sound = types.SimpleNamespace(set_reverb=lambda value,**kwargs:self.calls.append(('reverb',value,kwargs)), pause_all=lambda:None, resume_all=lambda:None)
         self.updates = []
         self.quits = []
     def say(self, text, **kw): self.calls.append(('say', text))
@@ -52,7 +53,9 @@ def execute(module, key):
     random.seed(3636)
     game, bank = Game(), Bank()
     run = module.Run(game, bank, lambda *args: game.calls.append(('over', args)))
-    run.room_number = 1
+    run.next_room()
+    run.spawn_queue=[]
+    run.tutorial=True
     run.state = 'fighting'
     run.set_weapon(key)
     for kind, distance in [('comum',1), ('comum',1.5), ('brutamontes',1.6)]:
@@ -72,6 +75,14 @@ def execute(module, key):
 
 
 class GraphicsTests(unittest.TestCase):
+    def test_fixture_provenance_and_config_match(self):
+        metadata=json.loads((REF/'origin.json').read_text(encoding='utf8'))
+        for name,sha in metadata['sha256'].items():
+            self.assertEqual(hashlib.sha256((REF/'dva'/name).read_bytes().replace(b'\r\n',b'\n')).hexdigest(),sha)
+        original={name:getattr(ORIGINAL.C,name) for name in dir(ORIGINAL.C) if name.isupper()}
+        current={name:getattr(PATCHED.C,name) for name in dir(PATCHED.C) if name.isupper()}
+        self.assertEqual(original,current,'Refresh the fixture from origin/main; see tools/update_fixtures.py')
+
     def test_combat_audio_timers_rng_parity_all_weapons(self):
         for key in ORIGINAL.C.WEAPONS:
             with self.subTest(weapon=key):

@@ -10,9 +10,15 @@ set -euo pipefail
 HOST=${1:-r36s}
 HERE=$(cd "$(dirname "$0")" && pwd)
 SDK=${2:-$HERE/../r36s-a11y-sdk}
-SDK_PY="$HERE/r36s_a11y"
-[ -d "$SDK_PY" ] || SDK_PY="$SDK/python/r36s_a11y"
+SDK_PY="$SDK/python/r36s_a11y"
+if [ ! -d "$SDK_PY" ]; then
+  if [ "$#" -ge 2 ]; then
+    echo "SDK não encontrado no caminho solicitado: $SDK"; exit 1
+  fi
+  SDK_PY="$HERE/r36s_a11y"
+fi
 [ -d "$SDK_PY" ] || { echo "SDK não encontrado."; exit 1; }
+echo "SDK selecionada: $SDK_PY"
 
 if ssh "$HOST" 'for p in /proc/[0-9]*; do readlink "$p/cwd"; done 2>/dev/null | grep -q "^/opt/a11y/games/dead-vs-alive"'; then
   echo "O Dead vs. Alive está aberto no console. Feche o jogo e rode de novo."

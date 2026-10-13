@@ -1,63 +1,88 @@
-# Dead vs. Alive: gráficos e SDK atual
+# Gráficos pixelart
 
-Instalado no R36S conectado em 13/10/2026. Os gráficos usam a SDK Python
-`76bb5a8d4fbf3b329355c27cbbae320c15494195`, última main consultada pelo GitHub
-CLI, com streaming, leituras parciais de evdev, supressão FN, reconexão e
-atualização da voz da instalação reconciliados. Não foi mantida a abordagem
-intermediária de copiar um módulo gráfico privado: o jogo usa
-`r36s_a11y.graphics.Graphics` da SDK nova.
+A camada visual é opcional e usa `r36s_a11y.graphics.Graphics`. O jogo continua
+jogável por áudio, com os controles, regras, tutorial e recordes existentes.
 
-Sete ambientes acompanham a ordem original das ondas: quarto de hospital,
-corredor, estacionamento, cozinha, metrô, igreja e floresta. Cenários,
-personagem de saia/rabo de cavalo e armas são monocromáticos. Zumbis são
-verdes; sangue continua vermelho. As sete armas têm sprites e efeitos próprios.
-Morte deixa explosão de 0,5 s e mancha temporária de oito segundos.
+A menina de saia e rabo de cavalo permanece no centro, vista de cima com
+inclinação. Personagem, armas e cenários são monocromáticos; zumbis são verdes;
+tiros usam cores quentes e sangue é vermelho. Sete ambientes acompanham a
+ordem das ondas: quarto de hospital, corredor, estacionamento, cozinha,
+metrô, igreja e floresta. Cada arma tem sprites e efeitos próprios. A morte
+produz explosão de sangue de 0,5 s e uma mancha temporária de oito segundos.
 
-O renderer desenha por texturas, sem Pillow no console. Lê SCREEN e ENERGY
-sem gravar preferências: desligar Gráficos libera SDL e mantém o áudio;
-reativar abre novamente. Atualização lógica permanece a original, enquanto
-o desenho usa teto de 30 fps, 20 em economia moderada e 10 em agressiva.
-Eventos limitados a 128 capturam impactos/mortes antes da remoção do alvo,
-não mudam dano, munição ou aleatoriedade do jogo. Pausa congela os efeitos,
-troca de sala limpa o cenário e saída destrói texturas/SDL.
+## Configurações e ciclo de vida
 
-`build.py` monta a camada sobre a referência limpa do jogo e o backup da SDK
-instalada em `outputs/dva-integration-2026-10-13/baseline`. A exportação dos
-sprites fica em `graphics-preview/build_preview.py`; a galeria atual de mapas
-e animações está em `outputs/dva-integration-2026-10-13/art/index.html`.
-O pacote não substitui sons ou recordes.
+O renderer lê SCREEN e ENERGY sem gravar preferências. SCREEN=0 ou a variável
+`A11Y_GRAPHICS=0` mantém o modo somente áudio. Reativar SCREEN abre o vídeo.
+O teto visual é 30 fps, 20 em economia moderate e 10 em aggressive, mantendo
+a atualização lógica do jogo. Falha no vídeo desliga apenas o renderer.
 
-Passaram seis testes locais, incluindo comparação de estado, timers, sons e
-estado aleatório das sete armas contra o jogo original. A prova nativa com
-perfil privado verificou sete mapas e sete armas, áudio/OpenAL/fala, pausa,
-retomada, liberação de vídeo em modo áudio e encerramento. A amostra final
-mediu 28,93 fps, mediana de desenho 12,49 ms e máximo 111,45 ms. Máximo inclui
-carregamento e capturas; não é latência de controles nem teste prolongado.
-Não houve campanha humana ou avaliação auditiva dos novos gráficos.
+A pausa congela os efeitos; mudar de sala limpa o cenário. Eventos limitados
+a 128 capturam impactos/mortes antes de remover alvos, sem mudar o instante
+do dano ou a aleatoriedade do jogo. Texturas e arquivos temporários são
+liberados ao fechar vídeo ou sair. HUD e menus usam fonte bitmap, com cache
+LRU de até 64 linhas: cada linha é uma chamada de desenho, em vez de uma por
+letra. O console não precisa de Pillow.
 
-A primeira prova omitiu ALSOFT_CONF e emitiu avisos de mmap do ALSA. Foi
-repetida usando o perfil real da galeria (`mmap=false`), sem esses avisos.
-Esse perfil e todos os hashes das preferências permaneceram intactos.
+## Instalar e acompanhar a SDK
 
-Relatórios/capturas finais locais: `outputs/dva-integration-2026-10-13/`.
-No aparelho: `/roms/a11y/updates/dva-native-production-env-20261013/`.
-Backup conjunto da SDK, jogo e plataforma:
-`/roms/a11y/updates/dva-sdk-pr5-20261013/before.tar.gz`.
-Recuperação: `sudo sh /roms/a11y/updates/dva-sdk-pr5-20261013/rollback.sh`.
-O timer de recuperação foi cancelado após as verificações.
+`./instalar.sh [host-ssh] [pasta-do-sdk]` prefere o clone da SDK indicado, ou
+`../r36s-a11y-sdk` quando existe. Sem clone e sem caminho explícito, usa a
+cópia incluída. Um caminho explícito inválido produz erro. O instalador não
+faz git pull automaticamente; atualize o clone antes de instalar.
 
-A plataforma também recebeu os quatro pedidos principais do revisor do PR5,
-incluindo o PR4 Data e hora/Salvar/Cancelar. Passaram 40 testes no PC e no
-console e 99 telas nativas nos três tamanhos. Os 81 arquivos do recibo
-conjunto devem corresponder aos hashes instalados; `receipt.json` guarda
-também os hashes de sistema/voz/áudio preservados.
+[SDK-ORIGIN.md](../SDK-ORIGIN.md) explica como atualizar a cópia de reserva e
+conferir sua origem. `sdk-origin.json` registra commit e hashes. O instalador
+inclui os gráficos e não instala com o jogo aberto.
 
-## Capturas reais e desenvolvimento neste repositório
+## Testes e autoria
+
+```sh
+python3 -m unittest discover -s tests
+python3 tools/update_fixtures.py --ref origin/main --check
+python3 tools/pixelart/build_preview.py --output previews
+```
+
+Pillow é necessário somente para a última etapa, no PC. PNG/GIF são gerados
+a partir de coordenadas inteiras, com ampliação 2× sem suavização. Os atlas
+transparentes, âncoras e recortes estão em `graphics/manifest.json`.
+
+O fixture de combate é fixado em um commit da main. Após atualizar a base:
+
+```sh
+git fetch origin main
+python3 tools/update_fixtures.py --ref origin/main
+python3 -m unittest discover -s tests
+```
+
+Revise a mudança dos arquivos e de `tests/fixtures/origin.json` junto da
+mudança de base. Os testes conferem hashes, constantes/reverb e equivalência
+de combate, sons, timers e RNG nas sete armas. Não atualize o fixture usando
+a própria branch gráfica, pois isso esconderia uma regressão do renderer.
+
+## Validação no R36S
+
+Em 13/10/2026 passaram nove testes no PC e no Python 3.7 do console. A prova
+nativa percorreu sete mapas e sete armas, com fala/OpenAL, pausa/retomada,
+liberação de vídeo em modo áudio e encerramento. Usa saves privados e o
+perfil de áudio que a galeria fornece, incluindo ALSOFT_CONF.
+
+Na amostra de quatro segundos após aquecimento, o cache de linhas apresentou
+29,98 fps, mediana de desenho de 8,87 ms e máximo de 14,12 ms. O relatório
+anterior, preservado em `native-report.json`, mediu mediana de 12,49 ms; seu
+máximo incluía carregamento/capturas e não é diretamente comparável ao
+máximo da nova amostra aquecida. A mediana de desenho caiu cerca de 29%.
+
+Callbacks de comandos com sons ainda frios mediram mediana de 36,11 ms e
+máximo de 59,20 ms; isso inclui áudio carregado sob demanda, não é latência
+física do botão. O maior intervalo de atualização na amostra foi 42,44 ms.
+O desenho continua no mesmo loop da entrada/áudio: estes números não são
+uma garantia para campanhas prolongadas ou todas as ondas.
+
+Após instalar esta revisão, o usuário jogou uma sala e informou não perceber
+atraso na mira/tiro nem cortes no áudio. Essa é uma avaliação humana separada
+das medições automatizadas. Relatório atual: [review-report.json](review-report.json).
 
 ![Hospital no R36S](imagens/map-hospital_quarto.png)
 
 ![Floresta no R36S](imagens/map-floresta.png)
-
-Para conferir as regras sem hardware: `python3 -m unittest discover -s tests`.
-Para exportar prévias editáveis: `python3 tools/pixelart/build_preview.py --output previews` (Pillow somente no PC).
-Os caminhos build.py/baseline mencionados acima documentam o workspace da instalação; neste repositório os assets e a SDK reconciliada já estão incluídos e `instalar.sh` usa essa cópia.

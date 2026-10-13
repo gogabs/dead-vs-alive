@@ -20,7 +20,8 @@ o SDK clonado ao lado deste repositório:
 ./instalar.sh
 ```
 
-O jogo aparece na galeria sozinho.
+O jogo aparece na galeria sozinho. O instalador prefere o clone da SDK quando
+disponível e usa a cópia incluída como reserva. [Origem e atualização da SDK](SDK-ORIGIN.md).
 
 ## Sons
 

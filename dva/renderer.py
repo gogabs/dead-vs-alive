@@ -7,9 +7,9 @@ the original game update rate stays unchanged. Pillow is never imported here.
 import json
 import os
 import time
-import unicodedata
 
 from . import config as C
+from .bitmap_text import BitmapText
 
 
 OPPOSITE = {'up': 'down', 'down': 'up', 'left': 'right', 'right': 'left'}
@@ -56,6 +56,7 @@ class Renderer:
             self.manifest = json.load(f)
         self.gfx = None
         self.textures = {}
+        self.bitmap_text = None
         self.animations = {}
         for name, atlas in self.manifest['atlases'].items():
             for anim in atlas['animations']:
@@ -88,10 +89,15 @@ class Renderer:
         paths.add(self.manifest['font']['file'])
         for path in paths:
             self.textures[path] = gfx.image(path)
+        with open(os.path.join(self.root,'font-source.json'),encoding='utf-8') as f:
+            self.bitmap_text = BitmapText(gfx,json.load(f))
         return True
 
     def close(self):
         if self.gfx is not None:
+            if self.bitmap_text is not None:
+                self.bitmap_text.close()
+                self.bitmap_text = None
             for image in self.textures.values():
                 self.gfx.sdl.SDL_DestroyTexture(image.texture)
             self.textures.clear()
@@ -117,14 +123,7 @@ class Renderer:
         self.gfx.draw(self.textures[atlas['file']], int(x), int(y), src=frames[index], scale=2)
 
     def text(self, words, x, y, color=(209, 209, 209), scale=2):
-        font = self.manifest['font']
-        image = self.textures[font['file']]
-        words = ''.join(c for c in unicodedata.normalize('NFD', str(words).upper()) if not unicodedata.combining(c))
-        for char in words:
-            index = font['characters'].find(char)
-            if index >= 0 and char != ' ':
-                self.gfx.draw(image, x, y, src=(index*6, 0, 6, 7), scale=scale, tint=color)
-            x += 6*scale
+        self.bitmap_text.draw(words,x,y,color,scale)
 
     def sync(self, run, dt):
         menu = self.menu()
@@ -255,7 +254,7 @@ class Renderer:
                     self.sprite('efeito-'+event['weapon'], 'attack', event['direction'],
                                 int((self.clock-event['at'])/.04), PLAYER[0]-128, PLAYER[1]-54-128)
             self.gfx.rect(0, 0, 640, 32, (17, 17, 17))
-            self.text('SALA %02d / %s' % (run.room_number, C.ROOMS[(max(1,run.room_number)-1)%7][1]), 12, 8)
+            self.text('SALA %02d / %s' % (run.room_number, C.ROOMS[(max(1,run.room_number)-1)%len(C.ROOMS)][1]), 12, 8)
             self.gfx.rect(0, 444, 640, 36, (17, 17, 17))
             self.text('VIDAS %d' % run.lives, 12, 456)
             self.text(run.weapon['name'], 164, 456)

@@ -28,6 +28,8 @@ original_run=a11y.Game.run
 started=time.monotonic()
 checks={}
 progress={'stage':'start','map':0,'weapon':0,'next':0}
+command_seconds=[]
+update_dt=[]
 
 
 def intercepted(self):
@@ -48,8 +50,10 @@ def intercepted(self):
             checks['openal']=self.sound.available
             checks['ambience']=run.ambience is not None and run.ambience.playing
             run.spawn('comum','right',3)
-            entry.button('right',a11y.DOWN,0)
-            entry.button('r2',a11y.DOWN,0)
+            began=time.monotonic()
+            self._dispatch(('button','right',a11y.DOWN,self.ms()))
+            self._dispatch(('button','r2',a11y.DOWN,self.ms()))
+            command_seconds.append(time.monotonic()-began)
             checks['combat']=run.kills==1 and run.ammo==7
             progress.update(stage='maps',next=now+.2)
             run.spawn_queue=[]
@@ -76,7 +80,9 @@ def intercepted(self):
             run.set_weapon(key)
             run.cooldown=0
             run.set_aim('right')
-            entry.button('r2',a11y.DOWN,0)
+            began=time.monotonic()
+            self._dispatch(('button','r2',a11y.DOWN,self.ms()))
+            command_seconds.append(time.monotonic()-began)
             graphics.sync(run,0)
             for _ in range(3):
                 graphics.gfx.begin(); graphics.draw(); graphics.gfx.end()
@@ -92,7 +98,10 @@ def intercepted(self):
             progress['stage']='resume'
         elif progress['stage']=='resume' and not run.paused:
             checks['resume']=True
+            graphics.render_seconds=[]
             progress.update(stage='sample',next=now+4,frames=graphics.frame_count,wall=now)
+        elif progress['stage']=='sample' and now<progress['next']:
+            update_dt.append(dt)
         elif progress['stage']=='sample' and now>=progress['next']:
             progress['sample_fps']=(graphics.frame_count-progress['frames'])/(now-progress['wall'])
             conf.write_text("SCREEN='0'\nENERGY='off'\n")
@@ -113,6 +122,9 @@ def intercepted(self):
             'sample_fps':progress.get('sample_fps'),
             'render_median_ms':statistics.median(renderer.render_seconds)*1000 if renderer.render_seconds else None,
             'render_max_ms':max(renderer.render_seconds)*1000 if renderer.render_seconds else None,
+            'command_callback_median_ms':statistics.median(command_seconds)*1000,
+            'command_callback_max_ms':max(command_seconds)*1000,
+            'sample_update_max_ms':max(update_dt)*1000 if update_dt else None,
             'elapsed_seconds':time.monotonic()-started,
             'scope':'Private saves; SDK callbacks, native GPU and real audio, not a human campaign'}
     (OUT/'report.json').write_text(json.dumps(result,indent=2))

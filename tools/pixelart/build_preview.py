@@ -637,6 +637,7 @@ def export_assets(out):
     icons.save(out/'sprites/icones-armas.png')
     manifest['icons'] = {'file': 'sprites/icones-armas.png', 'order': list(WEAPONS), 'cell_size': [48, 48]}
     (out/'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+    (out/'font-source.json').write_text(json.dumps(FONT)+'\n',encoding='utf-8')
     return manifest
 
 
