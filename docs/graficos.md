@@ -51,3 +51,13 @@ incluindo o PR4 Data e hora/Salvar/Cancelar. Passaram 40 testes no PC e no
 console e 99 telas nativas nos três tamanhos. Os 81 arquivos do recibo
 conjunto devem corresponder aos hashes instalados; `receipt.json` guarda
 também os hashes de sistema/voz/áudio preservados.
+
+## Capturas reais e desenvolvimento neste repositório
+
+![Hospital no R36S](imagens/map-hospital_quarto.png)
+
+![Floresta no R36S](imagens/map-floresta.png)
+
+Para conferir as regras sem hardware: `python3 -m unittest discover -s tests`.
+Para exportar prévias editáveis: `python3 tools/pixelart/build_preview.py --output previews` (Pillow somente no PC).
+Os caminhos build.py/baseline mencionados acima documentam o workspace da instalação; neste repositório os assets e a SDK reconciliada já estão incluídos e `instalar.sh` usa essa cópia.
