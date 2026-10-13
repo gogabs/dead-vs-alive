@@ -241,7 +241,7 @@ class Run:
         self.room_number += 1
         room_id, room_name, reverb, amb_volume, floor = C.ROOMS[(self.room_number - 1) % len(C.ROOMS)]
         self.floor = floor
-        self.game.sound.set_reverb(reverb)
+        self.game.sound.set_reverb(reverb, **C.REVERB_TWEAKS.get(reverb, {}))
         if self.ambience is not None:
             self.ambience.stop(fade=1.0)
         self.ambience = self.bank.play("ambiente_" + room_id, loop=True,
