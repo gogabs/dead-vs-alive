@@ -1,0 +1,16 @@
+{
+  "repository": "gogabs/r36s-a11y-sdk",
+  "commit": "3f12376e3548f1880dda5f6f9937ea630c8e8e6c",
+  "sha256": {
+    "audio.py": "23b47aa8e98e729dd60aea711adff24f7fcd9fbee484631c3d12a2825875d04b",
+    "buttons.py": "c7763030c1c5e2d13574214c5b1d7d7fcc5826c3c7f1f5db8aa8b94dadb89696",
+    "game.py": "7ea693dbe3dc24e90c27f7653de88988a0cfefb19ad4cc38879c670c6fe76448",
+    "graphics.py": "b55464b3e72d6d1649e5d95b3f22b65102280c74a4790c1a384684fedd53bd00",
+    "input.py": "974d0f87bfbcee86b233b255f7ff2ed141f1b7925416b05c839f997ffb9f9fac",
+    "menu.py": "a2e5b3faf94530407903bb33da6a1772a4d7f3dfb13c74e87941de08857bcf5b",
+    "pc.py": "21c39a7bb0ccaefc1494af1cd2268ed22d7d3c9dd762d094bac192a476a1c489",
+    "speech.py": "74bdf8cc2fd82616c55da6cf5918fb15d8b07c9a5a700fbe731e2d85d16f6c01",
+    "streaming.py": "3f03cffe2aafb658a874e04b7a89f1493191545455de3fbfbced17e2b59e6032",
+    "__init__.py": "4a2635ad6bd2e05c0da48824e3fc7209010808df889e2c40fc26176dd193bc61"
+  }
+}

@@ -1,0 +1,6104 @@
+{
+  "format": 1,
+  "status": "preview-only",
+  "screen": [
+    640,
+    480
+  ],
+  "art_scale": 2,
+  "sampling": "nearest",
+  "directions": [
+    "down",
+    "up",
+    "right",
+    "left"
+  ],
+  "atlases": {
+    "protagonista": {
+      "file": "sprites/protagonista.png",
+      "cell_size": [
+        32,
+        48
+      ],
+      "anchor": {
+        "feet": [
+          16,
+          46
+        ],
+        "hands": {
+          "down": [
+            21,
+            27
+          ],
+          "up": [
+            21,
+            21
+          ],
+          "right": [
+            27,
+            24
+          ],
+          "left": [
+            4,
+            24
+          ]
+        }
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              32,
+              48
+            ],
+            [
+              32,
+              0,
+              32,
+              48
+            ],
+            [
+              64,
+              0,
+              32,
+              48
+            ],
+            [
+              96,
+              0,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 180,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              32,
+              48
+            ],
+            [
+              32,
+              48,
+              32,
+              48
+            ],
+            [
+              64,
+              48,
+              32,
+              48
+            ],
+            [
+              96,
+              48,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              32,
+              48
+            ],
+            [
+              32,
+              96,
+              32,
+              48
+            ],
+            [
+              64,
+              96,
+              32,
+              48
+            ],
+            [
+              96,
+              96,
+              32,
+              48
+            ],
+            [
+              128,
+              96,
+              32,
+              48
+            ],
+            [
+              160,
+              96,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 140,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              144,
+              32,
+              48
+            ],
+            [
+              32,
+              144,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": false
+        },
+        {
+          "state": "death",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              192,
+              32,
+              48
+            ],
+            [
+              32,
+              192,
+              32,
+              48
+            ],
+            [
+              64,
+              192,
+              32,
+              48
+            ],
+            [
+              96,
+              192,
+              32,
+              48
+            ],
+            [
+              128,
+              192,
+              32,
+              48
+            ],
+            [
+              160,
+              192,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              32,
+              48
+            ],
+            [
+              32,
+              240,
+              32,
+              48
+            ],
+            [
+              64,
+              240,
+              32,
+              48
+            ],
+            [
+              96,
+              240,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 180,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              288,
+              32,
+              48
+            ],
+            [
+              32,
+              288,
+              32,
+              48
+            ],
+            [
+              64,
+              288,
+              32,
+              48
+            ],
+            [
+              96,
+              288,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              336,
+              32,
+              48
+            ],
+            [
+              32,
+              336,
+              32,
+              48
+            ],
+            [
+              64,
+              336,
+              32,
+              48
+            ],
+            [
+              96,
+              336,
+              32,
+              48
+            ],
+            [
+              128,
+              336,
+              32,
+              48
+            ],
+            [
+              160,
+              336,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 140,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              384,
+              32,
+              48
+            ],
+            [
+              32,
+              384,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": false
+        },
+        {
+          "state": "death",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              432,
+              32,
+              48
+            ],
+            [
+              32,
+              432,
+              32,
+              48
+            ],
+            [
+              64,
+              432,
+              32,
+              48
+            ],
+            [
+              96,
+              432,
+              32,
+              48
+            ],
+            [
+              128,
+              432,
+              32,
+              48
+            ],
+            [
+              160,
+              432,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              480,
+              32,
+              48
+            ],
+            [
+              32,
+              480,
+              32,
+              48
+            ],
+            [
+              64,
+              480,
+              32,
+              48
+            ],
+            [
+              96,
+              480,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 180,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              528,
+              32,
+              48
+            ],
+            [
+              32,
+              528,
+              32,
+              48
+            ],
+            [
+              64,
+              528,
+              32,
+              48
+            ],
+            [
+              96,
+              528,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              576,
+              32,
+              48
+            ],
+            [
+              32,
+              576,
+              32,
+              48
+            ],
+            [
+              64,
+              576,
+              32,
+              48
+            ],
+            [
+              96,
+              576,
+              32,
+              48
+            ],
+            [
+              128,
+              576,
+              32,
+              48
+            ],
+            [
+              160,
+              576,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 140,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              624,
+              32,
+              48
+            ],
+            [
+              32,
+              624,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": false
+        },
+        {
+          "state": "death",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              672,
+              32,
+              48
+            ],
+            [
+              32,
+              672,
+              32,
+              48
+            ],
+            [
+              64,
+              672,
+              32,
+              48
+            ],
+            [
+              96,
+              672,
+              32,
+              48
+            ],
+            [
+              128,
+              672,
+              32,
+              48
+            ],
+            [
+              160,
+              672,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              720,
+              32,
+              48
+            ],
+            [
+              32,
+              720,
+              32,
+              48
+            ],
+            [
+              64,
+              720,
+              32,
+              48
+            ],
+            [
+              96,
+              720,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 180,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              768,
+              32,
+              48
+            ],
+            [
+              32,
+              768,
+              32,
+              48
+            ],
+            [
+              64,
+              768,
+              32,
+              48
+            ],
+            [
+              96,
+              768,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              816,
+              32,
+              48
+            ],
+            [
+              32,
+              816,
+              32,
+              48
+            ],
+            [
+              64,
+              816,
+              32,
+              48
+            ],
+            [
+              96,
+              816,
+              32,
+              48
+            ],
+            [
+              128,
+              816,
+              32,
+              48
+            ],
+            [
+              160,
+              816,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 140,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              864,
+              32,
+              48
+            ],
+            [
+              32,
+              864,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": false
+        },
+        {
+          "state": "death",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              912,
+              32,
+              48
+            ],
+            [
+              32,
+              912,
+              32,
+              48
+            ],
+            [
+              64,
+              912,
+              32,
+              48
+            ],
+            [
+              96,
+              912,
+              32,
+              48
+            ],
+            [
+              128,
+              912,
+              32,
+              48
+            ],
+            [
+              160,
+              912,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        }
+      ]
+    },
+    "zumbi-comum": {
+      "file": "sprites/zumbi-comum.png",
+      "cell_size": [
+        32,
+        48
+      ],
+      "anchor": {
+        "feet": [
+          16,
+          46
+        ]
+      },
+      "animations": [
+        {
+          "state": "walk",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              32,
+              48
+            ],
+            [
+              32,
+              0,
+              32,
+              48
+            ],
+            [
+              64,
+              0,
+              32,
+              48
+            ],
+            [
+              96,
+              0,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              32,
+              48
+            ],
+            [
+              32,
+              48,
+              32,
+              48
+            ],
+            [
+              64,
+              48,
+              32,
+              48
+            ],
+            [
+              96,
+              48,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              32,
+              48
+            ],
+            [
+              32,
+              96,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              32,
+              48
+            ],
+            [
+              32,
+              144,
+              32,
+              48
+            ],
+            [
+              64,
+              144,
+              32,
+              48
+            ],
+            [
+              96,
+              144,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              32,
+              48
+            ],
+            [
+              32,
+              192,
+              32,
+              48
+            ],
+            [
+              64,
+              192,
+              32,
+              48
+            ],
+            [
+              96,
+              192,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              32,
+              48
+            ],
+            [
+              32,
+              240,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              32,
+              48
+            ],
+            [
+              32,
+              288,
+              32,
+              48
+            ],
+            [
+              64,
+              288,
+              32,
+              48
+            ],
+            [
+              96,
+              288,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              32,
+              48
+            ],
+            [
+              32,
+              336,
+              32,
+              48
+            ],
+            [
+              64,
+              336,
+              32,
+              48
+            ],
+            [
+              96,
+              336,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              32,
+              48
+            ],
+            [
+              32,
+              384,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              32,
+              48
+            ],
+            [
+              32,
+              432,
+              32,
+              48
+            ],
+            [
+              64,
+              432,
+              32,
+              48
+            ],
+            [
+              96,
+              432,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              32,
+              48
+            ],
+            [
+              32,
+              480,
+              32,
+              48
+            ],
+            [
+              64,
+              480,
+              32,
+              48
+            ],
+            [
+              96,
+              480,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              32,
+              48
+            ],
+            [
+              32,
+              528,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        }
+      ]
+    },
+    "zumbi-corredor": {
+      "file": "sprites/zumbi-corredor.png",
+      "cell_size": [
+        32,
+        48
+      ],
+      "anchor": {
+        "feet": [
+          16,
+          46
+        ]
+      },
+      "animations": [
+        {
+          "state": "walk",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              32,
+              48
+            ],
+            [
+              32,
+              0,
+              32,
+              48
+            ],
+            [
+              64,
+              0,
+              32,
+              48
+            ],
+            [
+              96,
+              0,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              32,
+              48
+            ],
+            [
+              32,
+              48,
+              32,
+              48
+            ],
+            [
+              64,
+              48,
+              32,
+              48
+            ],
+            [
+              96,
+              48,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              32,
+              48
+            ],
+            [
+              32,
+              96,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              32,
+              48
+            ],
+            [
+              32,
+              144,
+              32,
+              48
+            ],
+            [
+              64,
+              144,
+              32,
+              48
+            ],
+            [
+              96,
+              144,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              32,
+              48
+            ],
+            [
+              32,
+              192,
+              32,
+              48
+            ],
+            [
+              64,
+              192,
+              32,
+              48
+            ],
+            [
+              96,
+              192,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              32,
+              48
+            ],
+            [
+              32,
+              240,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              32,
+              48
+            ],
+            [
+              32,
+              288,
+              32,
+              48
+            ],
+            [
+              64,
+              288,
+              32,
+              48
+            ],
+            [
+              96,
+              288,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              32,
+              48
+            ],
+            [
+              32,
+              336,
+              32,
+              48
+            ],
+            [
+              64,
+              336,
+              32,
+              48
+            ],
+            [
+              96,
+              336,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              32,
+              48
+            ],
+            [
+              32,
+              384,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              32,
+              48
+            ],
+            [
+              32,
+              432,
+              32,
+              48
+            ],
+            [
+              64,
+              432,
+              32,
+              48
+            ],
+            [
+              96,
+              432,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 90,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              32,
+              48
+            ],
+            [
+              32,
+              480,
+              32,
+              48
+            ],
+            [
+              64,
+              480,
+              32,
+              48
+            ],
+            [
+              96,
+              480,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              32,
+              48
+            ],
+            [
+              32,
+              528,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        }
+      ]
+    },
+    "zumbi-brutamontes": {
+      "file": "sprites/zumbi-brutamontes.png",
+      "cell_size": [
+        32,
+        48
+      ],
+      "anchor": {
+        "feet": [
+          16,
+          46
+        ]
+      },
+      "animations": [
+        {
+          "state": "walk",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              32,
+              48
+            ],
+            [
+              32,
+              0,
+              32,
+              48
+            ],
+            [
+              64,
+              0,
+              32,
+              48
+            ],
+            [
+              96,
+              0,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              32,
+              48
+            ],
+            [
+              32,
+              48,
+              32,
+              48
+            ],
+            [
+              64,
+              48,
+              32,
+              48
+            ],
+            [
+              96,
+              48,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              32,
+              48
+            ],
+            [
+              32,
+              96,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              32,
+              48
+            ],
+            [
+              32,
+              144,
+              32,
+              48
+            ],
+            [
+              64,
+              144,
+              32,
+              48
+            ],
+            [
+              96,
+              144,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              32,
+              48
+            ],
+            [
+              32,
+              192,
+              32,
+              48
+            ],
+            [
+              64,
+              192,
+              32,
+              48
+            ],
+            [
+              96,
+              192,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              32,
+              48
+            ],
+            [
+              32,
+              240,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              32,
+              48
+            ],
+            [
+              32,
+              288,
+              32,
+              48
+            ],
+            [
+              64,
+              288,
+              32,
+              48
+            ],
+            [
+              96,
+              288,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              32,
+              48
+            ],
+            [
+              32,
+              336,
+              32,
+              48
+            ],
+            [
+              64,
+              336,
+              32,
+              48
+            ],
+            [
+              96,
+              336,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              32,
+              48
+            ],
+            [
+              32,
+              384,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              32,
+              48
+            ],
+            [
+              32,
+              432,
+              32,
+              48
+            ],
+            [
+              64,
+              432,
+              32,
+              48
+            ],
+            [
+              96,
+              432,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              32,
+              48
+            ],
+            [
+              32,
+              480,
+              32,
+              48
+            ],
+            [
+              64,
+              480,
+              32,
+              48
+            ],
+            [
+              96,
+              480,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              32,
+              48
+            ],
+            [
+              32,
+              528,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        }
+      ]
+    },
+    "zumbi-rastejante": {
+      "file": "sprites/zumbi-rastejante.png",
+      "cell_size": [
+        32,
+        48
+      ],
+      "anchor": {
+        "feet": [
+          16,
+          46
+        ]
+      },
+      "animations": [
+        {
+          "state": "walk",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              32,
+              48
+            ],
+            [
+              32,
+              0,
+              32,
+              48
+            ],
+            [
+              64,
+              0,
+              32,
+              48
+            ],
+            [
+              96,
+              0,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              32,
+              48
+            ],
+            [
+              32,
+              48,
+              32,
+              48
+            ],
+            [
+              64,
+              48,
+              32,
+              48
+            ],
+            [
+              96,
+              48,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              32,
+              48
+            ],
+            [
+              32,
+              96,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              32,
+              48
+            ],
+            [
+              32,
+              144,
+              32,
+              48
+            ],
+            [
+              64,
+              144,
+              32,
+              48
+            ],
+            [
+              96,
+              144,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              32,
+              48
+            ],
+            [
+              32,
+              192,
+              32,
+              48
+            ],
+            [
+              64,
+              192,
+              32,
+              48
+            ],
+            [
+              96,
+              192,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              32,
+              48
+            ],
+            [
+              32,
+              240,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              32,
+              48
+            ],
+            [
+              32,
+              288,
+              32,
+              48
+            ],
+            [
+              64,
+              288,
+              32,
+              48
+            ],
+            [
+              96,
+              288,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              32,
+              48
+            ],
+            [
+              32,
+              336,
+              32,
+              48
+            ],
+            [
+              64,
+              336,
+              32,
+              48
+            ],
+            [
+              96,
+              336,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              32,
+              48
+            ],
+            [
+              32,
+              384,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        },
+        {
+          "state": "walk",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              32,
+              48
+            ],
+            [
+              32,
+              432,
+              32,
+              48
+            ],
+            [
+              64,
+              432,
+              32,
+              48
+            ],
+            [
+              96,
+              432,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 160,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              32,
+              48
+            ],
+            [
+              32,
+              480,
+              32,
+              48
+            ],
+            [
+              64,
+              480,
+              32,
+              48
+            ],
+            [
+              96,
+              480,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": false
+        },
+        {
+          "state": "hurt",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              32,
+              48
+            ],
+            [
+              32,
+              528,
+              32,
+              48
+            ]
+          ],
+          "duration_ms": 80,
+          "loop": false
+        }
+      ]
+    },
+    "arma-pistola": {
+      "file": "sprites/arma-pistola.png",
+      "cell_size": [
+        48,
+        48
+      ],
+      "anchor": {
+        "hand": [
+          24,
+          24
+        ]
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              48,
+              48
+            ],
+            [
+              48,
+              48,
+              48,
+              48
+            ],
+            [
+              96,
+              48,
+              48,
+              48
+            ],
+            [
+              144,
+              48,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              48,
+              48
+            ],
+            [
+              48,
+              96,
+              48,
+              48
+            ],
+            [
+              96,
+              96,
+              48,
+              48
+            ],
+            [
+              144,
+              96,
+              48,
+              48
+            ],
+            [
+              192,
+              96,
+              48,
+              48
+            ],
+            [
+              240,
+              96,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              48,
+              48
+            ],
+            [
+              48,
+              192,
+              48,
+              48
+            ],
+            [
+              96,
+              192,
+              48,
+              48
+            ],
+            [
+              144,
+              192,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              48,
+              48
+            ],
+            [
+              48,
+              240,
+              48,
+              48
+            ],
+            [
+              96,
+              240,
+              48,
+              48
+            ],
+            [
+              144,
+              240,
+              48,
+              48
+            ],
+            [
+              192,
+              240,
+              48,
+              48
+            ],
+            [
+              240,
+              240,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              48,
+              48
+            ],
+            [
+              48,
+              336,
+              48,
+              48
+            ],
+            [
+              96,
+              336,
+              48,
+              48
+            ],
+            [
+              144,
+              336,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              48,
+              48
+            ],
+            [
+              48,
+              384,
+              48,
+              48
+            ],
+            [
+              96,
+              384,
+              48,
+              48
+            ],
+            [
+              144,
+              384,
+              48,
+              48
+            ],
+            [
+              192,
+              384,
+              48,
+              48
+            ],
+            [
+              240,
+              384,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              48,
+              48
+            ],
+            [
+              48,
+              480,
+              48,
+              48
+            ],
+            [
+              96,
+              480,
+              48,
+              48
+            ],
+            [
+              144,
+              480,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              48,
+              48
+            ],
+            [
+              48,
+              528,
+              48,
+              48
+            ],
+            [
+              96,
+              528,
+              48,
+              48
+            ],
+            [
+              144,
+              528,
+              48,
+              48
+            ],
+            [
+              192,
+              528,
+              48,
+              48
+            ],
+            [
+              240,
+              528,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        }
+      ]
+    },
+    "efeito-pistola": {
+      "file": "sprites/efeito-pistola.png",
+      "cell_size": [
+        128,
+        128
+      ],
+      "anchor": {
+        "origin": [
+          64,
+          64
+        ]
+      },
+      "animations": [
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              128,
+              128
+            ],
+            [
+              128,
+              0,
+              128,
+              128
+            ],
+            [
+              256,
+              0,
+              128,
+              128
+            ],
+            [
+              384,
+              0,
+              128,
+              128
+            ],
+            [
+              512,
+              0,
+              128,
+              128
+            ],
+            [
+              640,
+              0,
+              128,
+              128
+            ],
+            [
+              768,
+              0,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128,
+              128
+            ],
+            [
+              256,
+              128,
+              128,
+              128
+            ],
+            [
+              384,
+              128,
+              128,
+              128
+            ],
+            [
+              512,
+              128,
+              128,
+              128
+            ],
+            [
+              640,
+              128,
+              128,
+              128
+            ],
+            [
+              768,
+              128,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              256,
+              128,
+              128
+            ],
+            [
+              128,
+              256,
+              128,
+              128
+            ],
+            [
+              256,
+              256,
+              128,
+              128
+            ],
+            [
+              384,
+              256,
+              128,
+              128
+            ],
+            [
+              512,
+              256,
+              128,
+              128
+            ],
+            [
+              640,
+              256,
+              128,
+              128
+            ],
+            [
+              768,
+              256,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              384,
+              128,
+              128
+            ],
+            [
+              128,
+              384,
+              128,
+              128
+            ],
+            [
+              256,
+              384,
+              128,
+              128
+            ],
+            [
+              384,
+              384,
+              128,
+              128
+            ],
+            [
+              512,
+              384,
+              128,
+              128
+            ],
+            [
+              640,
+              384,
+              128,
+              128
+            ],
+            [
+              768,
+              384,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        }
+      ]
+    },
+    "arma-espingarda": {
+      "file": "sprites/arma-espingarda.png",
+      "cell_size": [
+        48,
+        48
+      ],
+      "anchor": {
+        "hand": [
+          24,
+          24
+        ]
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              48,
+              48
+            ],
+            [
+              48,
+              48,
+              48,
+              48
+            ],
+            [
+              96,
+              48,
+              48,
+              48
+            ],
+            [
+              144,
+              48,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              48,
+              48
+            ],
+            [
+              48,
+              96,
+              48,
+              48
+            ],
+            [
+              96,
+              96,
+              48,
+              48
+            ],
+            [
+              144,
+              96,
+              48,
+              48
+            ],
+            [
+              192,
+              96,
+              48,
+              48
+            ],
+            [
+              240,
+              96,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              48,
+              48
+            ],
+            [
+              48,
+              192,
+              48,
+              48
+            ],
+            [
+              96,
+              192,
+              48,
+              48
+            ],
+            [
+              144,
+              192,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              48,
+              48
+            ],
+            [
+              48,
+              240,
+              48,
+              48
+            ],
+            [
+              96,
+              240,
+              48,
+              48
+            ],
+            [
+              144,
+              240,
+              48,
+              48
+            ],
+            [
+              192,
+              240,
+              48,
+              48
+            ],
+            [
+              240,
+              240,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              48,
+              48
+            ],
+            [
+              48,
+              336,
+              48,
+              48
+            ],
+            [
+              96,
+              336,
+              48,
+              48
+            ],
+            [
+              144,
+              336,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              48,
+              48
+            ],
+            [
+              48,
+              384,
+              48,
+              48
+            ],
+            [
+              96,
+              384,
+              48,
+              48
+            ],
+            [
+              144,
+              384,
+              48,
+              48
+            ],
+            [
+              192,
+              384,
+              48,
+              48
+            ],
+            [
+              240,
+              384,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              48,
+              48
+            ],
+            [
+              48,
+              480,
+              48,
+              48
+            ],
+            [
+              96,
+              480,
+              48,
+              48
+            ],
+            [
+              144,
+              480,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              48,
+              48
+            ],
+            [
+              48,
+              528,
+              48,
+              48
+            ],
+            [
+              96,
+              528,
+              48,
+              48
+            ],
+            [
+              144,
+              528,
+              48,
+              48
+            ],
+            [
+              192,
+              528,
+              48,
+              48
+            ],
+            [
+              240,
+              528,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        }
+      ]
+    },
+    "efeito-espingarda": {
+      "file": "sprites/efeito-espingarda.png",
+      "cell_size": [
+        128,
+        128
+      ],
+      "anchor": {
+        "origin": [
+          64,
+          64
+        ]
+      },
+      "animations": [
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              128,
+              128
+            ],
+            [
+              128,
+              0,
+              128,
+              128
+            ],
+            [
+              256,
+              0,
+              128,
+              128
+            ],
+            [
+              384,
+              0,
+              128,
+              128
+            ],
+            [
+              512,
+              0,
+              128,
+              128
+            ],
+            [
+              640,
+              0,
+              128,
+              128
+            ],
+            [
+              768,
+              0,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128,
+              128
+            ],
+            [
+              256,
+              128,
+              128,
+              128
+            ],
+            [
+              384,
+              128,
+              128,
+              128
+            ],
+            [
+              512,
+              128,
+              128,
+              128
+            ],
+            [
+              640,
+              128,
+              128,
+              128
+            ],
+            [
+              768,
+              128,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              256,
+              128,
+              128
+            ],
+            [
+              128,
+              256,
+              128,
+              128
+            ],
+            [
+              256,
+              256,
+              128,
+              128
+            ],
+            [
+              384,
+              256,
+              128,
+              128
+            ],
+            [
+              512,
+              256,
+              128,
+              128
+            ],
+            [
+              640,
+              256,
+              128,
+              128
+            ],
+            [
+              768,
+              256,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              384,
+              128,
+              128
+            ],
+            [
+              128,
+              384,
+              128,
+              128
+            ],
+            [
+              256,
+              384,
+              128,
+              128
+            ],
+            [
+              384,
+              384,
+              128,
+              128
+            ],
+            [
+              512,
+              384,
+              128,
+              128
+            ],
+            [
+              640,
+              384,
+              128,
+              128
+            ],
+            [
+              768,
+              384,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        }
+      ]
+    },
+    "arma-rifle": {
+      "file": "sprites/arma-rifle.png",
+      "cell_size": [
+        48,
+        48
+      ],
+      "anchor": {
+        "hand": [
+          24,
+          24
+        ]
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              48,
+              48
+            ],
+            [
+              48,
+              48,
+              48,
+              48
+            ],
+            [
+              96,
+              48,
+              48,
+              48
+            ],
+            [
+              144,
+              48,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              48,
+              48
+            ],
+            [
+              48,
+              96,
+              48,
+              48
+            ],
+            [
+              96,
+              96,
+              48,
+              48
+            ],
+            [
+              144,
+              96,
+              48,
+              48
+            ],
+            [
+              192,
+              96,
+              48,
+              48
+            ],
+            [
+              240,
+              96,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              48,
+              48
+            ],
+            [
+              48,
+              192,
+              48,
+              48
+            ],
+            [
+              96,
+              192,
+              48,
+              48
+            ],
+            [
+              144,
+              192,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              48,
+              48
+            ],
+            [
+              48,
+              240,
+              48,
+              48
+            ],
+            [
+              96,
+              240,
+              48,
+              48
+            ],
+            [
+              144,
+              240,
+              48,
+              48
+            ],
+            [
+              192,
+              240,
+              48,
+              48
+            ],
+            [
+              240,
+              240,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              48,
+              48
+            ],
+            [
+              48,
+              336,
+              48,
+              48
+            ],
+            [
+              96,
+              336,
+              48,
+              48
+            ],
+            [
+              144,
+              336,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              48,
+              48
+            ],
+            [
+              48,
+              384,
+              48,
+              48
+            ],
+            [
+              96,
+              384,
+              48,
+              48
+            ],
+            [
+              144,
+              384,
+              48,
+              48
+            ],
+            [
+              192,
+              384,
+              48,
+              48
+            ],
+            [
+              240,
+              384,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              48,
+              48
+            ],
+            [
+              48,
+              480,
+              48,
+              48
+            ],
+            [
+              96,
+              480,
+              48,
+              48
+            ],
+            [
+              144,
+              480,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              48,
+              48
+            ],
+            [
+              48,
+              528,
+              48,
+              48
+            ],
+            [
+              96,
+              528,
+              48,
+              48
+            ],
+            [
+              144,
+              528,
+              48,
+              48
+            ],
+            [
+              192,
+              528,
+              48,
+              48
+            ],
+            [
+              240,
+              528,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        }
+      ]
+    },
+    "efeito-rifle": {
+      "file": "sprites/efeito-rifle.png",
+      "cell_size": [
+        128,
+        128
+      ],
+      "anchor": {
+        "origin": [
+          64,
+          64
+        ]
+      },
+      "animations": [
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              128,
+              128
+            ],
+            [
+              128,
+              0,
+              128,
+              128
+            ],
+            [
+              256,
+              0,
+              128,
+              128
+            ],
+            [
+              384,
+              0,
+              128,
+              128
+            ],
+            [
+              512,
+              0,
+              128,
+              128
+            ],
+            [
+              640,
+              0,
+              128,
+              128
+            ],
+            [
+              768,
+              0,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128,
+              128
+            ],
+            [
+              256,
+              128,
+              128,
+              128
+            ],
+            [
+              384,
+              128,
+              128,
+              128
+            ],
+            [
+              512,
+              128,
+              128,
+              128
+            ],
+            [
+              640,
+              128,
+              128,
+              128
+            ],
+            [
+              768,
+              128,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              256,
+              128,
+              128
+            ],
+            [
+              128,
+              256,
+              128,
+              128
+            ],
+            [
+              256,
+              256,
+              128,
+              128
+            ],
+            [
+              384,
+              256,
+              128,
+              128
+            ],
+            [
+              512,
+              256,
+              128,
+              128
+            ],
+            [
+              640,
+              256,
+              128,
+              128
+            ],
+            [
+              768,
+              256,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              384,
+              128,
+              128
+            ],
+            [
+              128,
+              384,
+              128,
+              128
+            ],
+            [
+              256,
+              384,
+              128,
+              128
+            ],
+            [
+              384,
+              384,
+              128,
+              128
+            ],
+            [
+              512,
+              384,
+              128,
+              128
+            ],
+            [
+              640,
+              384,
+              128,
+              128
+            ],
+            [
+              768,
+              384,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        }
+      ]
+    },
+    "arma-revolver": {
+      "file": "sprites/arma-revolver.png",
+      "cell_size": [
+        48,
+        48
+      ],
+      "anchor": {
+        "hand": [
+          24,
+          24
+        ]
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              48,
+              48
+            ],
+            [
+              48,
+              48,
+              48,
+              48
+            ],
+            [
+              96,
+              48,
+              48,
+              48
+            ],
+            [
+              144,
+              48,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              48,
+              48
+            ],
+            [
+              48,
+              96,
+              48,
+              48
+            ],
+            [
+              96,
+              96,
+              48,
+              48
+            ],
+            [
+              144,
+              96,
+              48,
+              48
+            ],
+            [
+              192,
+              96,
+              48,
+              48
+            ],
+            [
+              240,
+              96,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              48,
+              48
+            ],
+            [
+              48,
+              192,
+              48,
+              48
+            ],
+            [
+              96,
+              192,
+              48,
+              48
+            ],
+            [
+              144,
+              192,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              48,
+              48
+            ],
+            [
+              48,
+              240,
+              48,
+              48
+            ],
+            [
+              96,
+              240,
+              48,
+              48
+            ],
+            [
+              144,
+              240,
+              48,
+              48
+            ],
+            [
+              192,
+              240,
+              48,
+              48
+            ],
+            [
+              240,
+              240,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              48,
+              48
+            ],
+            [
+              48,
+              336,
+              48,
+              48
+            ],
+            [
+              96,
+              336,
+              48,
+              48
+            ],
+            [
+              144,
+              336,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              48,
+              48
+            ],
+            [
+              48,
+              384,
+              48,
+              48
+            ],
+            [
+              96,
+              384,
+              48,
+              48
+            ],
+            [
+              144,
+              384,
+              48,
+              48
+            ],
+            [
+              192,
+              384,
+              48,
+              48
+            ],
+            [
+              240,
+              384,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              48,
+              48
+            ],
+            [
+              48,
+              480,
+              48,
+              48
+            ],
+            [
+              96,
+              480,
+              48,
+              48
+            ],
+            [
+              144,
+              480,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              48,
+              48
+            ],
+            [
+              48,
+              528,
+              48,
+              48
+            ],
+            [
+              96,
+              528,
+              48,
+              48
+            ],
+            [
+              144,
+              528,
+              48,
+              48
+            ],
+            [
+              192,
+              528,
+              48,
+              48
+            ],
+            [
+              240,
+              528,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        }
+      ]
+    },
+    "efeito-revolver": {
+      "file": "sprites/efeito-revolver.png",
+      "cell_size": [
+        128,
+        128
+      ],
+      "anchor": {
+        "origin": [
+          64,
+          64
+        ]
+      },
+      "animations": [
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              128,
+              128
+            ],
+            [
+              128,
+              0,
+              128,
+              128
+            ],
+            [
+              256,
+              0,
+              128,
+              128
+            ],
+            [
+              384,
+              0,
+              128,
+              128
+            ],
+            [
+              512,
+              0,
+              128,
+              128
+            ],
+            [
+              640,
+              0,
+              128,
+              128
+            ],
+            [
+              768,
+              0,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128,
+              128
+            ],
+            [
+              256,
+              128,
+              128,
+              128
+            ],
+            [
+              384,
+              128,
+              128,
+              128
+            ],
+            [
+              512,
+              128,
+              128,
+              128
+            ],
+            [
+              640,
+              128,
+              128,
+              128
+            ],
+            [
+              768,
+              128,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              256,
+              128,
+              128
+            ],
+            [
+              128,
+              256,
+              128,
+              128
+            ],
+            [
+              256,
+              256,
+              128,
+              128
+            ],
+            [
+              384,
+              256,
+              128,
+              128
+            ],
+            [
+              512,
+              256,
+              128,
+              128
+            ],
+            [
+              640,
+              256,
+              128,
+              128
+            ],
+            [
+              768,
+              256,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              384,
+              128,
+              128
+            ],
+            [
+              128,
+              384,
+              128,
+              128
+            ],
+            [
+              256,
+              384,
+              128,
+              128
+            ],
+            [
+              384,
+              384,
+              128,
+              128
+            ],
+            [
+              512,
+              384,
+              128,
+              128
+            ],
+            [
+              640,
+              384,
+              128,
+              128
+            ],
+            [
+              768,
+              384,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        }
+      ]
+    },
+    "arma-facao": {
+      "file": "sprites/arma-facao.png",
+      "cell_size": [
+        48,
+        48
+      ],
+      "anchor": {
+        "hand": [
+          24,
+          24
+        ]
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              48,
+              48
+            ],
+            [
+              48,
+              48,
+              48,
+              48
+            ],
+            [
+              96,
+              48,
+              48,
+              48
+            ],
+            [
+              144,
+              48,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              96,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              48,
+              48
+            ],
+            [
+              48,
+              144,
+              48,
+              48
+            ],
+            [
+              96,
+              144,
+              48,
+              48
+            ],
+            [
+              144,
+              144,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              192,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              240,
+              48,
+              48
+            ],
+            [
+              48,
+              240,
+              48,
+              48
+            ],
+            [
+              96,
+              240,
+              48,
+              48
+            ],
+            [
+              144,
+              240,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              288,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              336,
+              48,
+              48
+            ],
+            [
+              48,
+              336,
+              48,
+              48
+            ],
+            [
+              96,
+              336,
+              48,
+              48
+            ],
+            [
+              144,
+              336,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        }
+      ]
+    },
+    "efeito-facao": {
+      "file": "sprites/efeito-facao.png",
+      "cell_size": [
+        128,
+        128
+      ],
+      "anchor": {
+        "origin": [
+          64,
+          64
+        ]
+      },
+      "animations": [
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              128,
+              128
+            ],
+            [
+              128,
+              0,
+              128,
+              128
+            ],
+            [
+              256,
+              0,
+              128,
+              128
+            ],
+            [
+              384,
+              0,
+              128,
+              128
+            ],
+            [
+              512,
+              0,
+              128,
+              128
+            ],
+            [
+              640,
+              0,
+              128,
+              128
+            ],
+            [
+              768,
+              0,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128,
+              128
+            ],
+            [
+              256,
+              128,
+              128,
+              128
+            ],
+            [
+              384,
+              128,
+              128,
+              128
+            ],
+            [
+              512,
+              128,
+              128,
+              128
+            ],
+            [
+              640,
+              128,
+              128,
+              128
+            ],
+            [
+              768,
+              128,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              256,
+              128,
+              128
+            ],
+            [
+              128,
+              256,
+              128,
+              128
+            ],
+            [
+              256,
+              256,
+              128,
+              128
+            ],
+            [
+              384,
+              256,
+              128,
+              128
+            ],
+            [
+              512,
+              256,
+              128,
+              128
+            ],
+            [
+              640,
+              256,
+              128,
+              128
+            ],
+            [
+              768,
+              256,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              384,
+              128,
+              128
+            ],
+            [
+              128,
+              384,
+              128,
+              128
+            ],
+            [
+              256,
+              384,
+              128,
+              128
+            ],
+            [
+              384,
+              384,
+              128,
+              128
+            ],
+            [
+              512,
+              384,
+              128,
+              128
+            ],
+            [
+              640,
+              384,
+              128,
+              128
+            ],
+            [
+              768,
+              384,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        }
+      ]
+    },
+    "arma-taco": {
+      "file": "sprites/arma-taco.png",
+      "cell_size": [
+        48,
+        48
+      ],
+      "anchor": {
+        "hand": [
+          24,
+          24
+        ]
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              48,
+              48
+            ],
+            [
+              48,
+              48,
+              48,
+              48
+            ],
+            [
+              96,
+              48,
+              48,
+              48
+            ],
+            [
+              144,
+              48,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              96,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              48,
+              48
+            ],
+            [
+              48,
+              144,
+              48,
+              48
+            ],
+            [
+              96,
+              144,
+              48,
+              48
+            ],
+            [
+              144,
+              144,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              192,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              240,
+              48,
+              48
+            ],
+            [
+              48,
+              240,
+              48,
+              48
+            ],
+            [
+              96,
+              240,
+              48,
+              48
+            ],
+            [
+              144,
+              240,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              288,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              336,
+              48,
+              48
+            ],
+            [
+              48,
+              336,
+              48,
+              48
+            ],
+            [
+              96,
+              336,
+              48,
+              48
+            ],
+            [
+              144,
+              336,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        }
+      ]
+    },
+    "efeito-taco": {
+      "file": "sprites/efeito-taco.png",
+      "cell_size": [
+        128,
+        128
+      ],
+      "anchor": {
+        "origin": [
+          64,
+          64
+        ]
+      },
+      "animations": [
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              128,
+              128
+            ],
+            [
+              128,
+              0,
+              128,
+              128
+            ],
+            [
+              256,
+              0,
+              128,
+              128
+            ],
+            [
+              384,
+              0,
+              128,
+              128
+            ],
+            [
+              512,
+              0,
+              128,
+              128
+            ],
+            [
+              640,
+              0,
+              128,
+              128
+            ],
+            [
+              768,
+              0,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128,
+              128
+            ],
+            [
+              256,
+              128,
+              128,
+              128
+            ],
+            [
+              384,
+              128,
+              128,
+              128
+            ],
+            [
+              512,
+              128,
+              128,
+              128
+            ],
+            [
+              640,
+              128,
+              128,
+              128
+            ],
+            [
+              768,
+              128,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              256,
+              128,
+              128
+            ],
+            [
+              128,
+              256,
+              128,
+              128
+            ],
+            [
+              256,
+              256,
+              128,
+              128
+            ],
+            [
+              384,
+              256,
+              128,
+              128
+            ],
+            [
+              512,
+              256,
+              128,
+              128
+            ],
+            [
+              640,
+              256,
+              128,
+              128
+            ],
+            [
+              768,
+              256,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              384,
+              128,
+              128
+            ],
+            [
+              128,
+              384,
+              128,
+              128
+            ],
+            [
+              256,
+              384,
+              128,
+              128
+            ],
+            [
+              384,
+              384,
+              128,
+              128
+            ],
+            [
+              512,
+              384,
+              128,
+              128
+            ],
+            [
+              640,
+              384,
+              128,
+              128
+            ],
+            [
+              768,
+              384,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        }
+      ]
+    },
+    "arma-besta": {
+      "file": "sprites/arma-besta.png",
+      "cell_size": [
+        48,
+        48
+      ],
+      "anchor": {
+        "hand": [
+          24,
+          24
+        ]
+      },
+      "animations": [
+        {
+          "state": "idle",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              48,
+              48,
+              48
+            ],
+            [
+              48,
+              48,
+              48,
+              48
+            ],
+            [
+              96,
+              48,
+              48,
+              48
+            ],
+            [
+              144,
+              48,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              96,
+              48,
+              48
+            ],
+            [
+              48,
+              96,
+              48,
+              48
+            ],
+            [
+              96,
+              96,
+              48,
+              48
+            ],
+            [
+              144,
+              96,
+              48,
+              48
+            ],
+            [
+              192,
+              96,
+              48,
+              48
+            ],
+            [
+              240,
+              96,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              144,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              192,
+              48,
+              48
+            ],
+            [
+              48,
+              192,
+              48,
+              48
+            ],
+            [
+              96,
+              192,
+              48,
+              48
+            ],
+            [
+              144,
+              192,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              240,
+              48,
+              48
+            ],
+            [
+              48,
+              240,
+              48,
+              48
+            ],
+            [
+              96,
+              240,
+              48,
+              48
+            ],
+            [
+              144,
+              240,
+              48,
+              48
+            ],
+            [
+              192,
+              240,
+              48,
+              48
+            ],
+            [
+              240,
+              240,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              288,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              336,
+              48,
+              48
+            ],
+            [
+              48,
+              336,
+              48,
+              48
+            ],
+            [
+              96,
+              336,
+              48,
+              48
+            ],
+            [
+              144,
+              336,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              384,
+              48,
+              48
+            ],
+            [
+              48,
+              384,
+              48,
+              48
+            ],
+            [
+              96,
+              384,
+              48,
+              48
+            ],
+            [
+              144,
+              384,
+              48,
+              48
+            ],
+            [
+              192,
+              384,
+              48,
+              48
+            ],
+            [
+              240,
+              384,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        },
+        {
+          "state": "idle",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              432,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 100,
+          "loop": true
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              480,
+              48,
+              48
+            ],
+            [
+              48,
+              480,
+              48,
+              48
+            ],
+            [
+              96,
+              480,
+              48,
+              48
+            ],
+            [
+              144,
+              480,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 70,
+          "loop": false
+        },
+        {
+          "state": "reload",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              528,
+              48,
+              48
+            ],
+            [
+              48,
+              528,
+              48,
+              48
+            ],
+            [
+              96,
+              528,
+              48,
+              48
+            ],
+            [
+              144,
+              528,
+              48,
+              48
+            ],
+            [
+              192,
+              528,
+              48,
+              48
+            ],
+            [
+              240,
+              528,
+              48,
+              48
+            ]
+          ],
+          "duration_ms": 120,
+          "loop": false
+        }
+      ]
+    },
+    "efeito-besta": {
+      "file": "sprites/efeito-besta.png",
+      "cell_size": [
+        128,
+        128
+      ],
+      "anchor": {
+        "origin": [
+          64,
+          64
+        ]
+      },
+      "animations": [
+        {
+          "state": "attack",
+          "direction": "down",
+          "frames": [
+            [
+              0,
+              0,
+              128,
+              128
+            ],
+            [
+              128,
+              0,
+              128,
+              128
+            ],
+            [
+              256,
+              0,
+              128,
+              128
+            ],
+            [
+              384,
+              0,
+              128,
+              128
+            ],
+            [
+              512,
+              0,
+              128,
+              128
+            ],
+            [
+              640,
+              0,
+              128,
+              128
+            ],
+            [
+              768,
+              0,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "up",
+          "frames": [
+            [
+              0,
+              128,
+              128,
+              128
+            ],
+            [
+              128,
+              128,
+              128,
+              128
+            ],
+            [
+              256,
+              128,
+              128,
+              128
+            ],
+            [
+              384,
+              128,
+              128,
+              128
+            ],
+            [
+              512,
+              128,
+              128,
+              128
+            ],
+            [
+              640,
+              128,
+              128,
+              128
+            ],
+            [
+              768,
+              128,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "right",
+          "frames": [
+            [
+              0,
+              256,
+              128,
+              128
+            ],
+            [
+              128,
+              256,
+              128,
+              128
+            ],
+            [
+              256,
+              256,
+              128,
+              128
+            ],
+            [
+              384,
+              256,
+              128,
+              128
+            ],
+            [
+              512,
+              256,
+              128,
+              128
+            ],
+            [
+              640,
+              256,
+              128,
+              128
+            ],
+            [
+              768,
+              256,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        },
+        {
+          "state": "attack",
+          "direction": "left",
+          "frames": [
+            [
+              0,
+              384,
+              128,
+              128
+            ],
+            [
+              128,
+              384,
+              128,
+              128
+            ],
+            [
+              256,
+              384,
+              128,
+              128
+            ],
+            [
+              384,
+              384,
+              128,
+              128
+            ],
+            [
+              512,
+              384,
+              128,
+              128
+            ],
+            [
+              640,
+              384,
+              128,
+              128
+            ],
+            [
+              768,
+              384,
+              128,
+              128
+            ]
+          ],
+          "duration_ms": 40,
+          "loop": false
+        }
+      ]
+    },
+    "sangue": {
+      "file": "sprites/sangue.png",
+      "cell_size": [
+        64,
+        64
+      ],
+      "anchor": {
+        "feet": [
+          32,
+          37
+        ]
+      },
+      "animations": [
+        {
+          "state": "burst",
+          "direction": "all",
+          "frames": [
+            [
+              0,
+              0,
+              64,
+              64
+            ],
+            [
+              64,
+              0,
+              64,
+              64
+            ],
+            [
+              128,
+              0,
+              64,
+              64
+            ],
+            [
+              192,
+              0,
+              64,
+              64
+            ],
+            [
+              256,
+              0,
+              64,
+              64
+            ],
+            [
+              320,
+              0,
+              64,
+              64
+            ],
+            [
+              384,
+              0,
+              64,
+              64
+            ],
+            [
+              448,
+              0,
+              64,
+              64
+            ],
+            [
+              512,
+              0,
+              64,
+              64
+            ],
+            [
+              576,
+              0,
+              64,
+              64
+            ]
+          ],
+          "duration_ms": 50,
+          "loop": false
+        },
+        {
+          "state": "stain",
+          "direction": "all",
+          "frames": [
+            [
+              0,
+              64,
+              64,
+              64
+            ],
+            [
+              64,
+              64,
+              64,
+              64
+            ],
+            [
+              128,
+              64,
+              64,
+              64
+            ],
+            [
+              192,
+              64,
+              64,
+              64
+            ],
+            [
+              256,
+              64,
+              64,
+              64
+            ],
+            [
+              320,
+              64,
+              64,
+              64
+            ],
+            [
+              384,
+              64,
+              64,
+              64
+            ],
+            [
+              448,
+              64,
+              64,
+              64
+            ],
+            [
+              512,
+              64,
+              64,
+              64
+            ]
+          ],
+          "duration_ms": 1000,
+          "loop": false
+        }
+      ]
+    }
+  },
+  "commits_consulted": {
+    "dead-vs-alive": "bea7e592b52a3516da4c928e236fdd8c6b9688fa",
+    "r36s-a11y": "806048413c3fef1abc63ca0f993855fd6530371c",
+    "r36s-a11y-sdk": "76bb5a8d4fbf3b329355c27cbbae320c15494195"
+  },
+  "font": {
+    "file": "sprites/font-bitmap.png",
+    "characters": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.:/ ",
+    "cell_size": [
+      6,
+      7
+    ]
+  },
+  "rooms": {
+    "hospital_quarto": "sprites/hospital_quarto.png",
+    "hospital_corredor": "sprites/hospital_corredor.png",
+    "estacionamento": "sprites/estacionamento.png",
+    "cozinha": "sprites/cozinha.png",
+    "metro": "sprites/metro.png",
+    "igreja": "sprites/igreja.png",
+    "floresta": "sprites/floresta.png"
+  },
+  "icons": {
+    "file": "sprites/icones-armas.png",
+    "order": [
+      "pistola",
+      "espingarda",
+      "rifle",
+      "revolver",
+      "facao",
+      "taco",
+      "besta"
+    ],
+    "cell_size": [
+      48,
+      48
+    ]
+  }
+}
