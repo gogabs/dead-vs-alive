@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checks": {
+    "speech": true,
+    "openal": true,
+    "ambience": true,
+    "combat": true,
+    "renderer_available": true,
+    "pause_freezes_visuals": true,
+    "resume": true,
+    "audio_mode_releases_video": true,
+    "sound_still_active": true,
+    "openal_no_error": true,
+    "finished": true,
+    "audio_closed": true,
+    "graphics_closed": true
+  },
+  "native_maps": 7,
+  "native_weapons": 7,
+  "sample_fps": 28.931010677972647,
+  "render_median_ms": 12.488000000075772,
+  "render_max_ms": 111.45283399991968,
+  "elapsed_seconds": 12.339616922999994,
+  "scope": "Private saves; SDK callbacks, native GPU and real audio, not a human campaign"
+}

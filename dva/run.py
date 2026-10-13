@@ -2,6 +2,7 @@
 import random
 
 from . import config as C
+from .graphics_events import emit, target
 
 
 def audio_pos(direction, distance):
@@ -81,6 +82,7 @@ class Zombie:
         self.distance = min(C.SPAWN_DISTANCE[1], self.distance + meters)
 
     def kill(self):
+        emit(self.run, 'death', **target(self))
         self.alive = False
         if self.groan is not None:
             self.groan.stop(fade=0.15)
@@ -121,6 +123,7 @@ class Run:
         self.target_timer = 0.0
         self.on_kill = None             # ganchos do tutorial
         self.on_reloaded = None
+        self._visual_events = []
         self.set_weapon(C.START_WEAPON)
 
     # --- armas ---------------------------------------------------------
@@ -191,11 +194,13 @@ class Run:
                        pos=(vx * 0.3, 0.0, vz * 0.3))
         if not w["melee"]:
             self.ammo -= 1
+        emit(self, 'attack', weapon=self.weapon_key, direction=self.aim)
         in_line = sorted((z for z in self.zombies if z.alive and z.direction == self.aim
                           and z.distance <= w["range"]), key=lambda z: z.distance)
         targets = in_line[:1] if w["mode"] == "single" else in_line
         for z in targets:
             z.hp -= w["damage"]
+            emit(self, "impact", **target(z))
             self.bank.play_first(["impacto_%s_%s" % (w["impact"], z.kind),
                                   "impacto_%s" % w["impact"], "impacto"],
                                  pos=z.pos(), pitch=random.uniform(0.95, 1.05))
@@ -239,6 +244,7 @@ class Run:
 
     def next_room(self):
         self.room_number += 1
+        emit(self, "room")
         room_id, room_name, reverb, amb_volume, floor = C.ROOMS[(self.room_number - 1) % len(C.ROOMS)]
         self.floor = floor
         self.game.sound.set_reverb(reverb)
@@ -292,6 +298,7 @@ class Run:
     def _bite(self, z):
         self.bank.play_first(["ataque_" + z.kind, "mordida"], pos=z.pos())
         self.bank.play("dor", reverb=False)
+        emit(self, "hurt")
         z.distance = C.BITE_PUSHBACK
         if self.tutorial:
             self.game.say("Ele te mordeu! No jogo de verdade, você perderia uma vida.",
@@ -304,6 +311,7 @@ class Run:
             self.game.say("Mordido! %s." % self._lives_text())
 
     def _game_over(self):
+        emit(self, "over")
         self.state = "over"
         self.stop_sounds()
         self.bank.play("morte", reverb=False)

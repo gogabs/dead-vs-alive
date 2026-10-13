@@ -180,4 +180,7 @@ def start():
     main_menu.open()
 
 
+from dva.renderer import attach
+graphics_session = attach(game, active_run, lambda: pause_menu if pause_menu.is_open else (main_menu if main_menu.is_open else None))
+
 game.run()

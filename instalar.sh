@@ -10,7 +10,9 @@ set -euo pipefail
 HOST=${1:-r36s}
 HERE=$(cd "$(dirname "$0")" && pwd)
 SDK=${2:-$HERE/../r36s-a11y-sdk}
-[ -d "$SDK/python/r36s_a11y" ] || { echo "SDK não encontrado em $SDK (clone gogabs/r36s-a11y-sdk)."; exit 1; }
+SDK_PY="$HERE/r36s_a11y"
+[ -d "$SDK_PY" ] || SDK_PY="$SDK/python/r36s_a11y"
+[ -d "$SDK_PY" ] || { echo "SDK não encontrado."; exit 1; }
 
 if ssh "$HOST" 'for p in /proc/[0-9]*; do readlink "$p/cwd"; done 2>/dev/null | grep -q "^/opt/a11y/games/dead-vs-alive"'; then
   echo "O Dead vs. Alive está aberto no console. Feche o jogo e rode de novo."
@@ -20,7 +22,7 @@ fi
 PKG=$(mktemp -d)
 trap 'rm -rf "$PKG"' EXIT
 mkdir -p "$PKG/dead-vs-alive"
-cp -r "$HERE/game.json" "$HERE/main.py" "$HERE/dva" "$HERE/sounds" "$SDK/python/r36s_a11y" "$PKG/dead-vs-alive/"
+cp -r "$HERE/game.json" "$HERE/main.py" "$HERE/dva" "$HERE/graphics" "$HERE/sounds" "$SDK_PY" "$PKG/dead-vs-alive/"
 find "$PKG" -name __pycache__ -prune -exec rm -rf {} +
 
 tar -C "$PKG" -czf - dead-vs-alive | ssh "$HOST" '

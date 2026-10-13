@@ -28,3 +28,7 @@ Os sons em `sounds/` vêm da coleção pessoal do autor (principalmente do jogo
 Swamp e de ambientes da pasta "sbyw"), importados por `tools/importar_sons.py`.
 Eles não são nossos para redistribuir, por isso este repositório é privado.
 Os sons provisórios sintetizados saem de `tools/gerar_sons_provisorios.py`.
+
+## Atualização de 13/10/2026
+
+[Gráficos, SDK atual, sete mapas e validação no console](docs/graficos.md).
