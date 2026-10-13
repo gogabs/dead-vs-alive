@@ -29,11 +29,13 @@ with tempfile.TemporaryDirectory(prefix='dva-installer-check-') as temp:
                               stdout=subprocess.PIPE,stderr=subprocess.STDOUT,universal_newlines=True)
         assert result.returncode==1,result.stdout
         return result.stdout
-    assert str(cloned) in selected()
+    def chosen(*args):
+        return Path(selected(*args).splitlines()[0].split(': ',1)[1]).resolve()
+    assert cloned==chosen()
     explicit=root/'explicit-sdk'
     (explicit/'python/r36s_a11y').mkdir(parents=True)
-    assert str(explicit/'python/r36s_a11y') in selected(str(explicit))
+    assert explicit/'python/r36s_a11y'==chosen(str(explicit))
     cloned.rmdir()
-    assert str(bundled) in selected()
+    assert bundled==chosen()
     assert 'SDK não encontrado no caminho solicitado' in selected(str(root/'missing-sdk'))
 print('Installer checks passed: clone priority, explicit path, bundled fallback, invalid explicit path')
