@@ -191,7 +191,10 @@ class Run:
                        pos=(vx * 0.3, 0.0, vz * 0.3))
         if not w["melee"]:
             self.ammo -= 1
-        in_line = sorted((z for z in self.zombies if z.alive and z.direction == self.aim
+        directions = (self.aim,)
+        if w["mode"] == "sweep":
+            directions += C.PERPENDICULAR[self.aim]
+        in_line = sorted((z for z in self.zombies if z.alive and z.direction in directions
                           and z.distance <= w["range"]), key=lambda z: z.distance)
         targets = in_line[:1] if w["mode"] == "single" else in_line
         for z in targets:
