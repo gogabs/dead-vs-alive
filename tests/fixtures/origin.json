@@ -2,7 +2,8 @@
   "repository": "gogabs/dead-vs-alive",
   "commit": "59c77ac2abe4039f78f4f8293c4c77e662870de4",
   "sha256": {
-    "run.py": "55b1153b961d5c5946ffbf4f4a29af68d84b75ad9223d95e6414d9c0a2e0e884",
-    "config.py": "09157803fca964510867e297b45da893c8517f95245b75d2243c559c5080e2a5"
-  }
+    "run.py": "0a49aff5997b835448c324237e9611469efaaac17de3b3fa934b1b354560b35e",
+    "config.py": "e182ba7a7431dded3bbcc122266f68bc28e0889747d720893cf31767853707db"
+  },
+  "local_changes": "Facão em varredura (sem o taco) aplicado sobre o commit acima, sem os ganchos gráficos."
 }

@@ -35,10 +35,6 @@ Os que não aparecem aqui são provisórios, gerados por tools/gerar_sons_provis
 | impacto_facao_comum_2.wav | swamp/Zombies/Normal/Machete2.wav |
 | impacto_facao_comum_3.wav | swamp/Zombies/Normal/Machete3.wav |
 | impacto_facao_comum_4.wav | swamp/Zombies/Normal/Machete4.wav |
-| impacto_taco_comum_1.wav | swamp/Zombies/Normal/Hammer1.wav |
-| impacto_taco_comum_2.wav | swamp/Zombies/Normal/Hammer2.wav |
-| impacto_taco_comum_3.wav | swamp/Zombies/Normal/Hammer3.wav |
-| impacto_taco_comum_4.wav | swamp/Zombies/Normal/Hammer4.wav |
 | queda_comum_ladrilho.wav | swamp/Zombies/Normal/FallHard.wav |
 | queda_comum_marmore.wav | swamp/Zombies/Normal/FallHard.wav |
 | queda_comum_concreto.wav | swamp/Zombies/Normal/FallHard.wav |
@@ -75,10 +71,6 @@ Os que não aparecem aqui são provisórios, gerados por tools/gerar_sons_provis
 | impacto_facao_corredor_2.wav | swamp/Zombies/Stalker/Machete2.wav |
 | impacto_facao_corredor_3.wav | swamp/Zombies/Stalker/Machete3.wav |
 | impacto_facao_corredor_4.wav | swamp/Zombies/Stalker/Machete4.wav |
-| impacto_taco_corredor_1.wav | swamp/Zombies/Stalker/Hammer1.wav |
-| impacto_taco_corredor_2.wav | swamp/Zombies/Stalker/Hammer2.wav |
-| impacto_taco_corredor_3.wav | swamp/Zombies/Stalker/Hammer3.wav |
-| impacto_taco_corredor_4.wav | swamp/Zombies/Stalker/Hammer4.wav |
 | queda_corredor_ladrilho.wav | swamp/Zombies/Stalker/FallHard.wav |
 | queda_corredor_marmore.wav | swamp/Zombies/Stalker/FallHard.wav |
 | queda_corredor_concreto.wav | swamp/Zombies/Stalker/FallHard.wav |
@@ -116,10 +108,6 @@ Os que não aparecem aqui são provisórios, gerados por tools/gerar_sons_provis
 | impacto_facao_brutamontes_2.wav | swamp/Zombies/Behemoth/Machete2.wav |
 | impacto_facao_brutamontes_3.wav | swamp/Zombies/Behemoth/Machete3.wav |
 | impacto_facao_brutamontes_4.wav | swamp/Zombies/Behemoth/Machete4.wav |
-| impacto_taco_brutamontes_1.wav | swamp/Zombies/Behemoth/Hammer1.wav |
-| impacto_taco_brutamontes_2.wav | swamp/Zombies/Behemoth/Hammer2.wav |
-| impacto_taco_brutamontes_3.wav | swamp/Zombies/Behemoth/Hammer3.wav |
-| impacto_taco_brutamontes_4.wav | swamp/Zombies/Behemoth/Hammer4.wav |
 | queda_brutamontes_ladrilho.wav | swamp/Zombies/Behemoth/FallHard.wav |
 | queda_brutamontes_marmore.wav | swamp/Zombies/Behemoth/FallHard.wav |
 | queda_brutamontes_concreto.wav | swamp/Zombies/Behemoth/FallHard.wav |
@@ -157,10 +145,6 @@ Os que não aparecem aqui são provisórios, gerados por tools/gerar_sons_provis
 | impacto_facao_rastejante_2.wav | swamp/Zombies/Lamprey/Machete2.wav |
 | impacto_facao_rastejante_3.wav | swamp/Zombies/Lamprey/Machete3.wav |
 | impacto_facao_rastejante_4.wav | swamp/Zombies/Lamprey/Machete4.wav |
-| impacto_taco_rastejante_1.wav | swamp/Zombies/Lamprey/Hammer1.wav |
-| impacto_taco_rastejante_2.wav | swamp/Zombies/Lamprey/Hammer2.wav |
-| impacto_taco_rastejante_3.wav | swamp/Zombies/Lamprey/Hammer3.wav |
-| impacto_taco_rastejante_4.wav | swamp/Zombies/Lamprey/Hammer4.wav |
 | queda_rastejante_ladrilho.wav | swamp/Zombies/Lamprey/FallHard.wav |
 | queda_rastejante_marmore.wav | swamp/Zombies/Lamprey/FallHard.wav |
 | queda_rastejante_concreto.wav | swamp/Zombies/Lamprey/FallHard.wav |
@@ -255,8 +239,6 @@ Os que não aparecem aqui são provisórios, gerados por tools/gerar_sons_provis
 | vazia_revolver.wav | swamp/Weapons/Python/Empty.wav |
 | golpe_facao.wav | swamp/Weapons/Machete/Fire.wav |
 | sacar_facao.wav | swamp/Weapons/Machete/Draw.wav |
-| golpe_taco.wav | swamp/Weapons/Hammer/Fire.wav |
-| sacar_taco.wav | swamp/Weapons/Hammer/Draw.wav |
 | tiro_besta.wav | swamp/Weapons/Crossbow/Fire.wav |
 | sacar_besta.wav | swamp/Weapons/Crossbow/Draw.wav |
 | vazia_besta.wav | swamp/Weapons/Crossbow/Empty.wav |
