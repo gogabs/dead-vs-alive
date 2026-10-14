@@ -57,7 +57,7 @@ python3 -m unittest discover -s tests
 
 Revise a mudança dos arquivos e de `tests/fixtures/origin.json` junto da
 mudança de base. Os testes conferem hashes, constantes/reverb e equivalência
-de combate, sons, timers e RNG nas sete armas. Não atualize o fixture usando
+de combate, sons, timers e RNG em todas as armas. Não atualize o fixture usando
 a própria branch gráfica, pois isso esconderia uma regressão do renderer.
 
 ## Validação no R36S

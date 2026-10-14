@@ -8,6 +8,9 @@ DIRECTIONS = {
     "left": ("esquerda", (-1.0, 0.0)),
 }
 DIRECTION_ORDER = ("up", "right", "down", "left")
+# Direções perpendiculares a cada uma (para o golpe em varredura do taco).
+PERPENDICULAR = {"up": ("left", "right"), "down": ("left", "right"),
+                 "left": ("up", "down"), "right": ("up", "down")}
 
 # Tom do clique de mira por direção: cada lado soa diferente.
 AIM_PITCH = {"up": 1.25, "right": 1.0, "down": 0.75, "left": 0.88}
@@ -23,6 +26,7 @@ MAX_LIVES = 3
 # mode: "single" = o zumbi mais próximo na direção
 #       "spread" = todos na direção dentro do alcance
 #       "pierce" = todos na direção dentro do alcance (projétil atravessa)
+#       "sweep"  = todos dentro do alcance na direção e nas duas perpendiculares
 # reload: segundos para encher o pente; "per_round" = um cartucho por X
 WEAPONS = {
     "pistola": dict(impact="bala", name="pistola", article="uma", mag=8, range=10.0, reload=1.4,
@@ -41,14 +45,11 @@ WEAPONS = {
                      cooldown=0.35, damage=1.5, mode="single", knockback=0.0,
                      melee=False, per_round=True,
                      describe="Seis tiros. Recarrega uma bala por vez, a qualquer momento."),
-    "facao": dict(impact="facao", name="facão", article="um", mag=0, range=1.6, reload=0.0,
-                  cooldown=0.4, damage=1.0, mode="single", knockback=0.0,
-                  melee=True, per_round=False,
-                  describe="Corpo a corpo. Espere o zumbi chegar bem perto."),
-    "taco": dict(impact="taco", name="taco", article="um", mag=0, range=1.8, reload=0.0,
-                 cooldown=0.7, damage=0.5, mode="single", knockback=4.0,
+    "taco": dict(impact="taco", name="taco", article="um", mag=0, range=1.5, reload=0.0,
+                 cooldown=0.35, damage=4.0, mode="sweep", knockback=0.0,
                  melee=True, per_round=False,
-                 describe="Corpo a corpo. Empurra o zumbi para longe; precisa de dois golpes."),
+                 describe="Corpo a corpo. Espere o zumbi chegar bem perto: um golpe mata, "
+                          "na frente e dos dois lados."),
     "besta": dict(impact="flecha", name="besta", article="uma", mag=1, range=16.0, reload=1.6,
                   cooldown=0.3, damage=2.0, mode="pierce", knockback=0.0,
                   melee=False, per_round=False,
