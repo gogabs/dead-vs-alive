@@ -54,10 +54,13 @@ class Zombie:
         self.growl_timer -= dt
         if self.growl_timer <= 0:
             self.growl_timer = random.uniform(*self.growl_every)
-            if self.audible():
-                self.groan = self.run.bank.play(self._name("rosnado"), pos=self.pos(),
-                                                volume=self.groan_volume,
-                                                pitch=self.voice_pitch)
+            # um rosnado por vez: o anterior ainda tocando segue o zumbi e
+            # para quando ele morre; um novo por cima ficaria solto no lugar
+            busy = self.groan is not None and self.groan.playing
+            if self.audible() and not busy and self.run.voice_free(self):
+                self.groan = self.run.track(self.run.bank.play(
+                    self._name("rosnado"), pos=self.pos(),
+                    volume=self.groan_volume, pitch=self.voice_pitch))
         if self.groan is not None:
             if self.groan.playing:
                 self.groan.set_position(*self.pos())
@@ -72,9 +75,11 @@ class Zombie:
             self.step_timer += self.step_every
             if self.quiet_until is None or self.distance <= self.quiet_until + 2:
                 floor = self.run.floor
-                self.run.bank.play_first(
-                    ["passo_%s" % self.kind, "passo_%s" % floor, "passo"],
-                    pos=self.pos(), volume=0.8, pitch=random.uniform(0.9, 1.1))
+                pitch = random.uniform(0.9, 1.1)
+                if self.run.voice_free(self):
+                    self.run.track(self.run.bank.play_first(
+                        ["passo_%s" % self.kind, "passo_%s" % floor, "passo"],
+                        pos=self.pos(), volume=0.8, pitch=pitch))
         self._update_groan(dt)
 
     def push(self, meters):
@@ -121,6 +126,7 @@ class Run:
         self.target_timer = 0.0
         self.on_kill = None             # ganchos do tutorial
         self.on_reloaded = None
+        self.zombie_voices = []         # passos e rosnados tocando (limite em config)
         self.set_weapon(C.START_WEAPON)
 
     # --- armas ---------------------------------------------------------
@@ -236,8 +242,37 @@ class Run:
         if self.on_reloaded:
             self.on_reloaded()
 
+    # --- vozes dos zumbis ----------------------------------------------
+    def track(self, voice):
+        if voice is not None:
+            self.zombie_voices.append(voice)
+        return voice
+
+    def voice_free(self, zombie):
+        """Se este zumbi pode começar um passo ou rosnado agora.
+
+        Com a sala cheia, passos e rosnados de todos os zumbis somados
+        passavam do limite de fontes da OpenAL: a SDK então cortava sons
+        no meio (inclusive o ambiente) e o mixer do console engasgava.
+        Até ZOMBIE_VOICES todos tocam; acima disso, só os mais próximos,
+        até ZOMBIE_VOICES_MAX. Tiros, impactos, mira e avisos não contam.
+        """
+        self.zombie_voices = [v for v in self.zombie_voices if v.playing]
+        busy = len(self.zombie_voices)
+        if busy < C.ZOMBIE_VOICES:
+            return True
+        if busy >= C.ZOMBIE_VOICES_MAX:
+            return False
+        nearer = sum(1 for z in self.zombies
+                     if z.alive and z is not zombie and z.distance < zombie.distance)
+        return nearer < C.ZOMBIE_VOICES_NEAREST
+
     # --- salas e ondas -------------------------------------------------
     def start(self):
+        # Lê do cartão todos os sons de combate de uma vez (os ambientes,
+        # maiores, ficam para quando a sala começa). Sem isso, cada som
+        # novo era lido no meio da luta, travando o laço do jogo.
+        self.bank.preload(exclude=("ambiente_",))
         self.next_room()
 
     def next_room(self):
