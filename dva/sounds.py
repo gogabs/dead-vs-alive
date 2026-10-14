@@ -5,7 +5,8 @@ várias variações (tiro_pistola_1.ogg, tiro_pistola_2.ogg...). play() sorteia
 uma variação. Trocar os sons do jogo é só trocar os arquivos.
 
 Os arquivos só são lidos na primeira vez que tocam (ou em preload), para o
-jogo abrir rápido no console.
+jogo abrir rápido no console. A partida chama preload ao começar, para não
+ler do cartão no meio da luta.
 """
 import os
 import random
@@ -42,9 +43,11 @@ class SoundBank:
             self.loaded[path] = sound
         return sound
 
-    def preload(self, *prefixes):
-        """Lê já os sons cujos nomes começam com estes prefixos."""
+    def preload(self, *prefixes, exclude=()):
+        """Lê já os sons cujos nomes começam com estes prefixos (todos, sem prefixos)."""
         for name, paths in self.variants.items():
+            if exclude and name.startswith(tuple(exclude)):
+                continue
             if not prefixes or name.startswith(prefixes):
                 for path in paths:
                     self._sound(path)
