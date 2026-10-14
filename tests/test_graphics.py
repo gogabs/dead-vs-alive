@@ -96,10 +96,10 @@ class GraphicsTests(unittest.TestCase):
         self.assertTrue(any(e['event']=='death' and e['distance']==3 for e in run._visual_events))
         self.assertFalse(z.alive)
 
-    def test_taco_kills_close_zombies_ahead_and_to_the_sides(self):
+    def test_facao_kills_close_zombies_ahead_and_to_the_sides(self):
         run=PATCHED.Run(Game(),Bank(),lambda *a:None)
         run.state='fighting'
-        run.set_weapon('taco')
+        run.set_weapon('facao')
         hit=[run.spawn('brutamontes','up',1.4), run.spawn('corredor','left',1.0),
              run.spawn('comum','right',1.2), run.spawn('comum','up',1.0)]
         spared=[run.spawn('comum','down',1.0), run.spawn('comum','up',1.7),
@@ -109,7 +109,7 @@ class GraphicsTests(unittest.TestCase):
         self.assertEqual([z.alive for z in spared],[True]*3)
         self.assertEqual([z.distance for z in spared],[1.0,1.7,1.6])
         self.assertEqual(run.kills,4)
-        self.assertNotIn('facao',PATCHED.C.WEAPONS)
+        self.assertNotIn('taco',PATCHED.C.WEAPONS)
 
     def test_bounded_queue(self):
         run=PATCHED.Run(Game(),Bank(),lambda *a:None)

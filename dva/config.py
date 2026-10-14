@@ -8,7 +8,7 @@ DIRECTIONS = {
     "left": ("esquerda", (-1.0, 0.0)),
 }
 DIRECTION_ORDER = ("up", "right", "down", "left")
-# Direções perpendiculares a cada uma (para o golpe em varredura do taco).
+# Direções perpendiculares a cada uma (para o golpe em varredura do facão).
 PERPENDICULAR = {"up": ("left", "right"), "down": ("left", "right"),
                  "left": ("up", "down"), "right": ("up", "down")}
 
@@ -45,11 +45,11 @@ WEAPONS = {
                      cooldown=0.35, damage=1.5, mode="single", knockback=0.0,
                      melee=False, per_round=True,
                      describe="Seis tiros. Recarrega uma bala por vez, a qualquer momento."),
-    "taco": dict(impact="taco", name="taco", article="um", mag=0, range=1.5, reload=0.0,
-                 cooldown=0.35, damage=4.0, mode="sweep", knockback=0.0,
-                 melee=True, per_round=False,
-                 describe="Corpo a corpo. Espere o zumbi chegar bem perto: um golpe mata, "
-                          "na frente e dos dois lados."),
+    "facao": dict(impact="facao", name="facão", article="um", mag=0, range=1.5, reload=0.0,
+                  cooldown=0.35, damage=4.0, mode="sweep", knockback=0.0,
+                  melee=True, per_round=False,
+                  describe="Corpo a corpo. Espere o zumbi chegar bem perto: um golpe mata, "
+                           "na frente e dos dois lados."),
     "besta": dict(impact="flecha", name="besta", article="uma", mag=1, range=16.0, reload=1.6,
                   cooldown=0.3, damage=2.0, mode="pierce", knockback=0.0,
                   melee=False, per_round=False,

@@ -23,14 +23,14 @@ OUT = os.path.join(HERE, "..", "sounds")
 KINDS = {"comum": "Normal", "corredor": "Stalker", "brutamontes": "Behemoth",
          "rastejante": "Lamprey"}
 IMPACTS = {"bala": "Bullet", "chumbo": "Shell", "rifle": "Sniper", "flecha": "Arrow",
-           "taco": "Hammer"}
+           "facao": "Machete"}
 # piso do jogo -> (pasta de passos, queda do zumbi)
 FLOORS = {"ladrilho": ("Tile", "FallHard"), "marmore": ("Marble", "FallHard"),
           "concreto": ("Concrete", "FallHard"), "metal": ("Metal", "FallMetal"),
           "cimento": ("Cement", "FallHard"), "madeira": ("Wood", "FallWood"),
           "folhas": ("Leaves", "FallGrass")}
 WEAPONS = {"pistola": "G17", "espingarda": "SPAS12", "rifle": "M40", "revolver": "Python",
-           "taco": "Hammer", "besta": "Crossbow"}
+           "facao": "Machete", "besta": "Crossbow"}
 AMBIENCE = {
     "hospital_quarto": "swamp/Ambience/EKG.wav",
     "hospital_corredor": "sbyw/loop_hallway.ogg",
@@ -58,7 +58,7 @@ def plan():
         items.append(("passo_" + floor, "swamp/Steps/%s/*.wav" % steps, True))
     for key, src in WEAPONS.items():
         w = "swamp/Weapons/%s/" % src
-        melee = key == "taco"
+        melee = key == "facao"
         items.append((("golpe_" if melee else "tiro_") + key, w + "Fire.wav", False))
         items.append(("sacar_" + key, w + "Draw.wav", False))
         if not melee:
