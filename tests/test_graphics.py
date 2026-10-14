@@ -111,6 +111,27 @@ class GraphicsTests(unittest.TestCase):
         self.assertEqual(run.kills,4)
         self.assertNotIn('taco',PATCHED.C.WEAPONS)
 
+    def test_zombie_voices_are_capped_and_nearest_keep_playing(self):
+        class Live(Bank):
+            def play(self, name, **kw):
+                self.calls.append((name, kw))
+                return types.SimpleNamespace(playing=True, stop=lambda **kw: None,
+                                             set_position=lambda *a: None)
+        bank=Live()
+        run=PATCHED.Run(Game(),bank,lambda *a:None)
+        run.state='fighting'
+        run.tutorial=True   # sem vidas: mordidas não encerram a partida
+        far=[run.spawn('comum','up',15+i*0.1) for i in range(20)]
+        near=[run.spawn('comum',d,2.0) for d in ('up','right','down','left')]
+        for _ in range(90): run.update(1/30)
+        C=PATCHED.C
+        self.assertEqual(len(run.zombie_voices),C.ZOMBIE_VOICES_MAX)
+        # um rosnado por zumbi enquanto o anterior toca
+        self.assertLessEqual(sum(1 for c in bank.calls if c[0].startswith('rosnado')),len(far)+len(near))
+        run.zombie_voices=run.zombie_voices[:C.ZOMBIE_VOICES]
+        self.assertTrue(all(run.voice_free(z) for z in near))
+        self.assertFalse(run.voice_free(far[-1]))
+
     def test_bounded_queue(self):
         run=PATCHED.Run(Game(),Bank(),lambda *a:None)
         events=importlib.import_module('patched_dva.graphics_events')

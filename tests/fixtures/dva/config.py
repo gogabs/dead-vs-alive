@@ -71,6 +71,15 @@ ZOMBIES = {
                        growl=(2.0, 4.0)),
 }
 
+# Limite de passos e rosnados de zumbis tocando ao mesmo tempo. A SDK tem 32
+# fontes; com 15 ou mais zumbis na sala (salas 8 em diante, ou segurando a
+# onda com o facão) elas acabavam e os sons eram cortados. Acima de
+# ZOMBIE_VOICES, só os ZOMBIE_VOICES_NEAREST zumbis mais próximos tocam, até
+# ZOMBIE_VOICES_MAX; o resto da SDK fica livre para tiros, impactos e avisos.
+ZOMBIE_VOICES = 12
+ZOMBIE_VOICES_MAX = 18
+ZOMBIE_VOICES_NEAREST = 4
+
 # (id, nome falado, preset de reverberação, volume do ambiente, piso)
 # O piso escolhe os passos e o som da queda dos zumbis.
 ROOMS = [
