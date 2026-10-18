@@ -1,4 +1,5 @@
 """Tutorial guiado: mirar, atirar, recarregar e ouvir a situação."""
+from .controls import aim_controls, label
 from .run import Run
 
 
@@ -17,8 +18,9 @@ class Tutorial:
         self.run.state = "fighting"
         self.run.game.sound.set_reverb("quarto")
         self._say("Tutorial. Os zumbis vêm de quatro direções: frente, direita, trás e "
-                  "esquerda. Use os direcionais ou o analógico para mirar. Cada direção "
-                  "tem um clique diferente. Experimente agora e aperte B quando terminar.")
+                  "esquerda. Use %s para mirar. Cada direção "
+                  "tem um clique diferente. Experimente agora e aperte %s quando terminar."
+                  % (aim_controls(self.game), label(self.game, "confirmar")))
         self.waiting_confirm = True
 
     def _say(self, text, then=None):
@@ -35,7 +37,7 @@ class Tutorial:
         if self.step == 1:
             self._say("Um zumbi vem da frente. Mire para cima. Quando um zumbi está na "
                       "sua mira, você ouve um bipe: grave e lento se ele está longe, "
-                      "agudo e rápido se está perto. Atire com R2.",
+                      "agudo e rápido se está perto. Atire com %s." % label(self.game, "atirar"),
                       lambda: r.spawn("comum", "up", 9.0))
         elif self.step == 2:
             self._say("Muito bem. Agora um vem da esquerda.",
@@ -45,11 +47,12 @@ class Tutorial:
                       lambda: r.spawn("comum", "down", 9.0))
         elif self.step == 4:
             r.ammo = 0
-            self._say("Sua arma ficou vazia. Ao apertar R2 sem balas, você ouve um clique "
-                      "seco. Aperte X para recarregar.")
+            self._say("Sua arma ficou vazia. Ao apertar %s sem balas, você ouve um clique "
+                      "seco. Aperte %s para recarregar."
+                      % (label(self.game, "atirar"), label(self.game, "recarregar")))
         elif self.step == 5:
-            self._say("Dois zumbis de lados diferentes. A qualquer momento, Select fala a "
-                      "situação: arma, balas e onde estão os zumbis.",
+            self._say("Dois zumbis de lados diferentes. A qualquer momento, %s fala a "
+                      "situação: arma, balas e onde estão os zumbis." % label(self.game, "situacao"),
                       lambda: (r.spawn("comum", "right", 12.0), r.spawn("comum", "up", 15.0)))
         else:
             self._say("Fim do tutorial. No jogo, cada sala tem uma onda de zumbis, e ao "

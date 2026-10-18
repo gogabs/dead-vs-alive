@@ -12,12 +12,14 @@ if not os.path.isdir(os.path.join(HERE, "r36s_a11y")):
 
 import r36s_a11y as a11y
 
-from dva import config as C
+from dva import controls
 from dva.run import Run
 from dva.sounds import SoundBank
 from dva.tutorial import Tutorial
 
 game = a11y.Game(axes=True)
+if hasattr(game, "actions"):   # SDK com ações (teclado e controles no PC)
+    game.actions(controls.ACTIONS)
 bank = SoundBank(game.sound, "sounds")
 bank.preload("menu", "mira", "alvo")
 menu_sounds = {"move": bank.get("menu_mover"), "select": bank.get("menu_confirmar")}
@@ -84,15 +86,17 @@ def active_run():
     return current["run"]
 
 
-INSTRUCTIONS = (
-    "Zumbis vêm da frente, da direita, de trás e da esquerda. Ouça os passos e os "
-    "gemidos: quanto mais alto, mais perto. Mire com os direcionais ou o analógico "
-    "esquerdo. Com um zumbi na mira, toca um bipe: grave e lento se ele está longe, "
-    "agudo e rápido se está perto. Atire ou golpeie com R2 e recarregue a arma "
-    "vazia com X. Select fala "
-    "a situação. Start pausa. Ao limpar uma sala você recupera uma vida e pode achar "
-    "uma arma nova; a troca é obrigatória. Use fone de ouvido."
-)
+def instructions():
+    name = lambda action: controls.label(game, action)
+    return (
+        "Zumbis vêm da frente, da direita, de trás e da esquerda. Ouça os passos e os "
+        "gemidos: quanto mais alto, mais perto. Mire com %s. Com um zumbi na mira, toca "
+        "um bipe: grave e lento se ele está longe, agudo e rápido se está perto. Atire "
+        "ou golpeie com %s e recarregue a arma vazia com %s. %s fala a situação. %s "
+        "pausa. Ao limpar uma sala você recupera uma vida e pode achar uma arma nova; a "
+        "troca é obrigatória. Use fone de ouvido."
+        % (controls.aim_controls(game), name("atirar"), name("recarregar"),
+           name("situacao"), name("pausa")))
 
 
 def on_main(index, item):
@@ -101,7 +105,7 @@ def on_main(index, item):
     elif item == "Tutorial":
         start_tutorial()
     elif item == "Instruções":
-        game.say(INSTRUCTIONS)
+        game.say(instructions())
     elif item == "Recorde":
         game.say(record_text())
     else:
@@ -133,24 +137,37 @@ pause_menu = a11y.Menu(game, "Pausa", ["Continuar", "Sair para o menu"],
 
 
 # --- controles ------------------------------------------------------------
-@game.on_button
-def button(b, state, ms):
+def act(action):
     run = active_run()
-    if run is None or state != a11y.DOWN:
+    if run is None:
         return
-    if b in C.DIRECTIONS:
-        run.set_aim(b)
-    elif b == "r2":
+    if action in controls.AIM:
+        run.set_aim(controls.AIM[action])
+    elif action == "atirar":
         run.fire()
-    elif b == "x":
+    elif action == "recarregar":
         run.reload()
-    elif b == "select":
+    elif action == "situacao":
         run.situation()
-    elif b == "start":
+    elif action == "pausa":
         run.pause()
         pause_menu.open()
-    elif b == "b" and current["tutorial"] is not None:
+    elif action == "confirmar" and current["tutorial"] is not None:
         current["tutorial"].confirm()
+
+
+if hasattr(game, "on_action"):
+    @game.on_action
+    def action(name, state, ms):
+        if state == a11y.DOWN:
+            act(name)
+else:   # SDK antigo: só os botões do R36S
+    BUTTON_ACTIONS = {spec["r36s"]: name for name, spec in controls.ACTIONS.items()}
+
+    @game.on_button
+    def button(b, state, ms):
+        if state == a11y.DOWN and b in BUTTON_ACTIONS:
+            act(BUTTON_ACTIONS[b])
 
 
 @game.on_axis

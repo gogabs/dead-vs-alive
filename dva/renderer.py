@@ -72,18 +72,30 @@ class Renderer:
         self.failed = False
         self.frame_count = 0
         self.render_seconds = []
+        # No PC a janela é do Game (dela vem o teclado): desenha nela, no on_draw.
+        self.shared = getattr(game, 'pc', False)
         game.on_update(self.update)
         game.on_quit(self.close)
+        if self.shared:
+            game.on_draw(self.draw_frame)
 
     def open(self):
         from r36s_a11y.graphics import Graphics
         os.environ.setdefault('SDL_RENDER_SCALE_QUALITY', '0')
-        gfx = Graphics('Dead vs. Alive', self.root)
-        self.gfx = gfx
-        if not gfx.open():
-            self.failed = True
-            self.close()
-            return False
+        if self.shared:
+            gfx = self.game.gfx
+            if not gfx.available:
+                self.failed = True
+                return False
+            gfx.base_dir = self.root
+            self.gfx = gfx
+        else:
+            gfx = Graphics('Dead vs. Alive', self.root)
+            self.gfx = gfx
+            if not gfx.open():
+                self.failed = True
+                self.close()
+                return False
         paths = {a['file'] for a in self.manifest['atlases'].values()}
         paths.update(self.manifest['rooms'].values())
         paths.add(self.manifest['font']['file'])
@@ -101,7 +113,9 @@ class Renderer:
             for image in self.textures.values():
                 self.gfx.sdl.SDL_DestroyTexture(image.texture)
             self.textures.clear()
-            if self.gfx.available:
+            if self.shared:
+                pass  # a janela é do Game, que a fecha ao sair
+            elif self.gfx.available:
                 self.gfx.close()
             else:
                 # Failed/partial SDL initialization also relinquishes video.
@@ -168,7 +182,7 @@ class Renderer:
             self.interval = frame_interval()
             if not self.enabled:
                 self.close()
-        if not getattr(self, 'enabled', False) or self.failed:
+        if not getattr(self, 'enabled', False) or self.failed or self.shared:
             return
         self.frame_due += dt
         if self.frame_due < self.interval:
@@ -186,6 +200,28 @@ class Renderer:
             self.render_seconds = self.render_seconds[-300:]
         except Exception as exc:
             # A graphical failure must not abort audio gameplay.
+            print('[dva] gráficos indisponíveis: %s' % exc)
+            self.failed = True
+            self.close()
+
+    def menu_help(self):
+        label = getattr(self.game, 'button_label', None)
+        if label is None:
+            return 'B CONFIRMA / A VOLTA'
+        return ('%s CONFIRMA / %s VOLTA' % (label('b'), label('a'))).upper()
+
+    def draw_frame(self, gfx):
+        """Quadro no PC, chamado pelo Game a cada on_draw."""
+        if not getattr(self, 'enabled', False) or self.failed:
+            caption = getattr(self.game, '_draw_caption', None)
+            if caption:
+                caption(gfx)
+            return
+        try:
+            if self.gfx is None and not self.open():
+                return
+            self.draw()
+        except Exception as exc:
             print('[dva] gráficos indisponíveis: %s' % exc)
             self.failed = True
             self.close()
@@ -271,7 +307,7 @@ class Renderer:
                 if i == menu.index:
                     self.gfx.rect(124, 164+i*36, 390, 30, (65,65,65))
                 self.text(label, 142, 172+i*36, (241,241,241) if i==menu.index else (163,163,163))
-            self.text('B CONFIRMA / A VOLTA', 132, 360, scale=1)
+            self.text(self.menu_help(), 132, 360, scale=1)
 
 
 def attach(game, active_run, menu):
