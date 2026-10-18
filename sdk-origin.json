@@ -1,16 +1,21 @@
 {
   "repository": "gogabs/r36s-a11y-sdk",
-  "commit": "3f12376e3548f1880dda5f6f9937ea630c8e8e6c",
+  "commit": "981f3ceada62cd136d0f40cbdd31f62dc17c3b38",
   "sha256": {
-    "audio.py": "23b47aa8e98e729dd60aea711adff24f7fcd9fbee484631c3d12a2825875d04b",
+    "menu.py": "bd5afc92f9c7f2c131e3ecf66fee077b4538f2ee5857df2d43cc67c875dde4d0",
+    "pc.py": "64127d172b38e7ff9ec7213f851cd9e560a5daebfea945030eef54a11d9dd3e0",
+    "audio.py": "93f7065f65684384173f2c3eae47a2aa50c4edcae3e51925afc301ab56a5f12a",
+    "native.py": "cdb619a4e0ea3a828451efdb61361f9c85a9537439f052c3b7b00996861c96bf",
+    "__init__.py": "e0c0ffbb2a7be095f28be885e4f6c4e47188de3dc95ba988ff91014dc4f570dd",
+    "actions.py": "618949ffe32006e7106b76902ad73de2640a38ffd160617efb575e007824e650",
+    "streaming.py": "c213c329b2e82c44fadb5efc87e94ccfe8210b75c8dbd1bd763ec15970d92882",
+    "sndfile.py": "291c88cc2223821d79d67eb0e7a949e983b62ba6fdd3226b28fe5ccc20e4aa14",
+    "speech.py": "23d43c652fe12dda0399264c9be9c319f79145e523e87b0f8338f8114b51ab89",
     "buttons.py": "c7763030c1c5e2d13574214c5b1d7d7fcc5826c3c7f1f5db8aa8b94dadb89696",
-    "game.py": "7ea693dbe3dc24e90c27f7653de88988a0cfefb19ad4cc38879c670c6fe76448",
-    "graphics.py": "b55464b3e72d6d1649e5d95b3f22b65102280c74a4790c1a384684fedd53bd00",
+    "game.py": "77e9822f60e647b359ead51a8483b57b0f94f760c586b3a4631ba70024fc1342",
+    "speech_history.py": "7fd0c055249e49fee142f5207df0d15e0a4fb28d80d7ac0de49403b6812a40a4",
+    "desktop.py": "df37a6f24ce30ee21d644f5956e20b06e445793bf4ea5470e546adc562fcfbf5",
     "input.py": "974d0f87bfbcee86b233b255f7ff2ed141f1b7925416b05c839f997ffb9f9fac",
-    "menu.py": "a2e5b3faf94530407903bb33da6a1772a4d7f3dfb13c74e87941de08857bcf5b",
-    "pc.py": "21c39a7bb0ccaefc1494af1cd2268ed22d7d3c9dd762d094bac192a476a1c489",
-    "speech.py": "74bdf8cc2fd82616c55da6cf5918fb15d8b07c9a5a700fbe731e2d85d16f6c01",
-    "streaming.py": "3f03cffe2aafb658a874e04b7a89f1493191545455de3fbfbced17e2b59e6032",
-    "__init__.py": "4a2635ad6bd2e05c0da48824e3fc7209010808df889e2c40fc26176dd193bc61"
+    "graphics.py": "423125d99abc3d0c8382bd591ac3dac9f3ff33ab5be74c834b6fcb3a80931fab"
   }
 }
