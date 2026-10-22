@@ -25,10 +25,11 @@ disponível e usa a cópia incluída como reserva. [Origem e atualização da SD
 
 ## Sons
 
-Os sons em `sounds/` vêm da coleção pessoal do autor (principalmente do jogo
-Swamp e de ambientes da pasta "sbyw"), importados por `tools/importar_sons.py`.
-Eles não são nossos para redistribuir, por isso este repositório é privado.
-Os sons provisórios sintetizados saem de `tools/gerar_sons_provisorios.py`.
+Os sons em `sounds/` vêm principalmente do jogo Swamp, do Aprone, que
+distribui os sons abertos junto com o jogo, e de ambientes da pasta "sbyw",
+importados por `tools/importar_sons.py`. Os créditos e os direitos desses sons
+são dos autores originais. Os sons provisórios sintetizados saem de
+`tools/gerar_sons_provisorios.py`.
 
 ## Atualização de 13/10/2026
 
